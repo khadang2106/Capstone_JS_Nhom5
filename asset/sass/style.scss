@@ -1,0 +1,12 @@
+// Customer (Store)
+@import "./Base/reset";
+@import "./Helpers/variable";
+@import "./Helpers/mixin";
+@import "./Components/button";
+@import "./Page/customer/header";
+@import "./Page/customer/carousel";
+@import "./Page/customer/product";
+@import "./Page/customer/footer";
+
+// HOME
+@import "./Layouts/home";
