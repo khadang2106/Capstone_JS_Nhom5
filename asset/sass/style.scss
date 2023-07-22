@@ -1,12 +1,24 @@
-// Customer (Store)
-@import "./Base/reset";
-@import "./Helpers/variable";
-@import "./Helpers/mixin";
-@import "./Components/button";
-@import "./Page/customer/header";
-@import "./Page/customer/carousel";
-@import "./Page/customer/product";
-@import "./Page/customer/footer";
+//Global
+@import './Helpers/variable';
+@import './Helpers/mixin';
+@import './Base/reset';
+
+//Components
+@import './Components/button';
+@import './Components/fn-btn';
+@import './Components/table';
+@import './Components/modal';
+
+//Layouts
+@import './Layouts/header';
+@import './Layouts/footer';
 
 // HOME
-@import "./Layouts/home";
+@import './Pages/home';
+
+//Customer Page
+@import './Pages/customer/carousel';
+@import './Pages/customer/product';
+
+//Admin Page
+@import './Pages/admin/product-list';
