@@ -18,4 +18,4 @@ function continueShopping(){
         tableCart.classList.remove("show-cart");
         isValid = true;
     };
-}
+};
