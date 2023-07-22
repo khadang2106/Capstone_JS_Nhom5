@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Admin Page</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <!-- Fonts AWESOME -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- CSS of Admin Page -->
+    <link rel="stylesheet" href="../../asset/css/style.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header-nav">
+      <nav class="navbar navbar-expand-md navbar-dark">
+        <!-- Brand -->
+        <div class="nav-logo">
+          <a class="navbar-brand" href="#">
+            <i class="fab fa-magento"></i>
+            <span>CYBER STORE</span>
+          </a>
+        </div>
+
+        <!-- Toggler/collapsibe Button -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#collapsibleNavbar"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="../../index.html">
+                <i class="fa fa-home"></i>
+                <p>HOME</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../../customer/view/customer.html">
+                <i class="fa fa-store"></i>
+                <p>STORE</p>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <!-- Product List -->
+    <section class="product-list pb-3">
+      <div class="container">
+        <h2>Product Lists</h2>
+        <!-- Nav pills -->
+        <div class="d-lg-flex d-block mb-3 pb-3 border-bottom">
+          <ul class="nav nav-pills mr-auto">
+            <li class="nav-item" onclick="availableFn()">
+              <a class="nav-link active" data-toggle="pill" href="#phone"
+                >Phone Management</a
+              >
+            </li>
+            <li class="nav-item" onclick="unavailableFn()">
+              <a class="nav-link" data-toggle="pill" href="#tablet"
+                >Tablet Management</a
+              >
+            </li>
+            <li class="nav-item" onclick="unavailableFn()">
+              <a class="nav-link" data-toggle="pill" href="#laptop"
+                >Laptop Management</a
+              >
+            </li>
+          </ul>
+          <div>
+            <button
+              class="btn btn-primary fn-btn btn-add-product"
+              data-toggle="modal"
+              data-target="#addingModal"
+              id="btnAdd"
+            >
+              Add Product
+            </button>
+          </div>
+        </div>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div class="tab-pane container active" id="phone">
+            <div class="table-product" id="tableProduct">
+              <table class="table table-bordered table-responsive table-hover">
+                <thead class="thead-dark">
+                  <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Photo</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="tbdList"></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="tab-pane container fade" id="tablet">
+            Tính năng đang được xây dựng
+          </div>
+          <div class="tab-pane container fade" id="laptop">
+            Tính năng đang được xây dựng
+          </div>
+        </div>
+      </div>
+
+      <!-- Adding Product Modal -->
+      <div class="modal fade" id="addingModal" data-backdrop="static">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title mx-auto">Product Management</h4>
+              <!-- <button type="button" class="close" data-dismiss="modal">
+                &times;
+              </button> -->
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+              <div class="container p-3">
+                <div class="form-group">
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fa fa-mobile-alt"></i>
+                      </span>
+                    </div>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Phone's Name"
+                    />
+                  </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fa fa-dollar-sign"></i>
+                      </span>
+                    </div>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Phone's Price"
+                    />
+                  </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fa fa-arrows-alt"></i>
+                      </span>
+                    </div>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Phone's Screen"
+                    />
+                  </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fa fa-camera"></i>
+                      </span>
+                    </div>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Phone's Front Cam"
+                    />
+                  </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fa fa-camera-retro"></i>
+                      </span>
+                    </div>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Phone's Back Cam"
+                    />
+                  </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fa fa-file-image"></i>
+                      </span>
+                    </div>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Phone's Image"
+                    />
+                  </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fa fa-comment-alt"></i>
+                      </span>
+                    </div>
+                    <textarea
+                      class="form-control"
+                      id=""
+                      cols="30"
+                      rows="3"
+                      placeholder="Description"
+                    ></textarea>
+                  </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fa fa-signature"></i>
+                      </span>
+                    </div>
+                    <select class="form-control" id="">
+                      <option>Choose Brand</option>
+                      <option>Apple</option>
+                      <option>Samsung</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <div class="modal-footer-btn"></div>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-head">
+        <span>Get connected with us on social networks:</span>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-google-plus-g"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-github"></i></a>
+      </div>
+      <div class="container">
+        <div class="footer-body row">
+          <div class="footer-item content col-lg-5 col-sm-6 col-12">
+            <i class="fab fa-magento"></i>
+            <span>CYBER STORE</span>
+            <p>
+              We pride ourselves on our efficiency and hard work, but most of
+              all our ability to source you the best quality and best value
+              products and devices in the market.
+            </p>
+          </div>
+          <div class="footer-item brand col-lg-2 col-sm-6 col-12">
+            <h4>BRANDS</h4>
+            <ul>
+              <li><a href="#">Iphone</a></li>
+              <li><a href="#">SamSung</a></li>
+              <li><a href="#">Xiaomi</a></li>
+              <li><a href="#">Oppo</a></li>
+            </ul>
+          </div>
+          <div class="footer-item support col-lg-2 col-sm-6 col-12">
+            <h4>LINKS</h4>
+            <ul>
+              <li><a href="#">Order</a></li>
+              <li><a href="#">Support</a></li>
+              <li><a href="#">Setting</a></li>
+              <li><a href="#">Helps</a></li>
+            </ul>
+          </div>
+          <div class="footer-item contact col-lg-3 col-sm-6 col-12">
+            <h4>CONTACT</h4>
+            <ul>
+              <li>
+                <i class="fa fa-home"></i>
+                <span>2Bis NTMK, Quận 1, TP.HCM</span>
+              </li>
+              <li>
+                <a href="mailto:CyberStore@gmail.com">
+                  <i class="fa fa-envelope"></i>
+                  <span>CyberStore@gmail.com</span>
+                </a>
+              </li>
+              <li>
+                <a href="tel:+0961051014">
+                  <i class="fa fa-phone"></i>
+                  <span>096.105.1014</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.facebook.com/messages/t/6007860205969625">
+                  <i class="fab fa-facebook-messenger"></i>
+                  <span>http://messages.com</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <span>&copy; 2022 Copyright : </span
+        ><a
+          href="https://cybersoft.edu.vn/bootcamp-lap-trinh-fullstack-javascript-tu-zero-co-viec-lam/"
+          >Cyber Store</a
+        >
+      </div>
+    </footer>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- My JS -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"
+      integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="../controller/method.js"></script>
+    <script src="../models/product.js"></script>
+    <script src="../services/api.js"></script>
+    <script src="../controller/admin.js"></script>
+  </body>
+</html>

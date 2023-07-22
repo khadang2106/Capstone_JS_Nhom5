@@ -1,0 +1,27 @@
+.product-list {
+  padding-top: 100px;
+  background-color: $cl-white-1;
+  .nav-pills {
+    background-color: $cl-grey-1;
+    border-radius: 5rem;
+    padding: 10px;
+  }
+  .nav-item .nav-link {
+    padding: 8px 15px;
+    border-radius: 5rem;
+  }
+  .nav-item .nav-link.active {
+    color: black;
+    background: white;
+  }
+  .table-product {
+    table {
+      overflow: hidden;
+      display: table;
+      border-top-left-radius: 1.25rem;
+      border-top-right-radius: 1.25rem;
+      background-color: white;
+      box-shadow: 0 12px 23px 0 rgba(62, 73, 84, 0.2);
+    }
+  }
+}
