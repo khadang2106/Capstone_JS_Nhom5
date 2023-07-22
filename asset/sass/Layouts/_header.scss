@@ -47,6 +47,8 @@
                 padding: 0;
                 margin-top: 2px;
                 transition: all 1s;
+                i{color: white; transition: all .5s;};
+                p{@extend i };
                 &::after{
                     content: "";
                     display: block;
@@ -55,6 +57,9 @@
                     background-color: #ffd507;
                     transition: all 0.5s;
                 };
+                &:hover{
+                    i{color: #ffd507};
+                }
             };
         };
         .nav-item3{
@@ -88,22 +93,31 @@
         a {
             color: black;
         }
+        .cart-content {
+            margin-bottom: 20px;
+        }
         .cart-product{
+            height: 160px;
             .cart-product-img{
                 img{
                     width: 10rem;
                     position: absolute;
-                    top: -30px;
+                    top: -40px;
+                    left: 15%;
                 };
             };
             .cart-product-info{
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
                 a{
                     color: #E80505;
                 }
             }
         };
         .cart-temporary{
-            margin-bottom: 4rem;
+            margin: 30px 0;
             .temporary-quantity{
                 h5{
                     display: inline;
@@ -151,6 +165,9 @@
                     background-color: #a9ccfa;
                     transform: scaleX(1.1)
                 }
+                &:focus{
+                    outline: none;
+                }
             };
             .cart-emmpty{
                 @extend .cart-continue;
@@ -164,6 +181,9 @@
                     background-color: #f06d6d;
                     transform: scaleX(1.1)
                 }
+                &:focus{
+                    outline: none;
+                }
             };
             .cart-pay{
                 @extend .cart-continue;
@@ -173,6 +193,9 @@
                     color: black;
                     background-color: #ffa47a;
                     transform: scaleX(1.1)
+                }
+                &:focus{
+                    outline: none;
                 }
             };
         };
