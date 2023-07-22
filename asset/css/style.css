@@ -198,7 +198,7 @@ p {
   top: -30px;
 }
 .header-nav .table-pay .cart-product .cart-product-info a {
-  color: #E80505;
+  color: #e80505;
 }
 .header-nav .table-pay .cart-temporary {
   margin: 4rem 0;
@@ -246,8 +246,8 @@ p {
   transform: scaleX(1.1);
 }
 .header-nav .table-pay .cart-btn .cart-emmpty {
-  background-color: #E80505;
-  border: 1px #E80505 solid;
+  background-color: #e80505;
+  border: 1px #e80505 solid;
 }
 .header-nav .table-pay .cart-btn .cart-emmpty i, .header-nav .table-pay .cart-btn .cart-emmpty .navbar-nav .nav-item .nav-link p, .header-nav .navbar-nav .nav-item .nav-link .table-pay .cart-btn .cart-emmpty p {
   margin-right: 15px;
