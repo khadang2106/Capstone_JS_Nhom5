@@ -20,6 +20,6 @@ function continueShopping() {
   }
 }
 
-window.onmousedown = () => {
-  domEle('showCart').classList.remove('show-cart');
-};
+// window.onmousedown = () => {
+//   domEle('showCart').classList.remove('show-cart');
+// };
