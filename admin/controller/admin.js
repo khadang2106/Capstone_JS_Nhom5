@@ -1,41 +1,42 @@
 let api = new Service();
 
-getEle('btnAdd').onclick = function () {
+domId('btnAdd').onclick = function () {
   document.querySelector(
     '.modal-footer-btn'
-  ).innerHTML = `<button type="button" class="btn btn-success">Add</button>`;
+  ).innerHTML = `<button type="button" class="btn btn-info fn-btn">Add</button>`;
 };
 
 function unavailableFn() {
-  getEle('btnAdd').disabled = true;
+  domId('btnAdd').disabled = true;
 }
 function availableFn() {
-  getEle('btnAdd').disabled = false;
+  domId('btnAdd').disabled = false;
 }
 
-function renderUI(data) {
-  let content = '';
-  for (let i = 0; i < data.length; i++) {
-    let product = data[i];
-    content += `
-        <tr>
-          <td>${product.id}</td>
-          <td>${product.name}</td>
-          <td>${product.price}</td>
+const renderUI = (data) => {
+  const content = data.reduce((total, element) => {
+    total += `
+      <tr>
+          <td>${element.id}</td>
+          <td>${element.name}</td>
+          <td>${element.price}</td>
           <td>
-            <img src="${product.img}" class="card-img-top d-block mx-auto" style="width: 100px"/>
+            <img src="${element.img}" class="card-img-top d-block mx-auto" style="width: 100px"/>
           </td>
-          <td>${product.desc}</td>
-          <td>${product.type}</td>
+          <td>${element.desc}</td>
+          <td>${element.type}</td>
           <td>
-            <button type="button" class="btn btn-danger">Del</button>
-            <button type="button" class="btn btn-warning">Fix</button>
+            <button type="button" class="btn btn-danger fn-btn"><i class="fa-solid fa-trash"></i>Delete</button>
+            <button type="button" class="btn btn-warning fn-btn"><i class="fa-solid fa-wrench"></i>Modify</button>
           </td>
         </tr>
-        `;
-  }
-  getEle('tbdList').innerHTML = content;
-}
+    `;
+
+    return total;
+  }, '');
+
+  domId('tbdList').innerHTML = content;
+};
 
 function getListProduct() {
   api

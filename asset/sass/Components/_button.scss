@@ -55,3 +55,32 @@
     }
   }
 }
+
+//Changing btn default color
+.btn-warning {
+  @include btnColor(#ffab2d, #ffab2d, #212529);
+  &:hover,
+  &:focus {
+    @include btnColor(#ff9c07, #f99500, #212529);
+  }
+}
+.btn-danger {
+  @include btnColor(#ff4c41, #ff4c41, #fff);
+  &:hover,
+  &:focus {
+    @include btnColor(#ff281b, #ff1c0e, #fff);
+  }
+}
+.btn-info {
+  @include btnColor(#009ff9, #0097ec, #fff);
+  &:hover,
+  &:focus {
+    @include btnColor(#07a5ff, #009ff9, #fff);
+  }
+}
+.btn-primary {
+  @include btnColor(#2953e8, #2953e8, #fff);
+  &:hover {
+    @include btnColor(#1740d4, #163dc8, #fff);
+  }
+}

@@ -1,3 +1,1 @@
-function getEle(id) {
-  return document.getElementById(id);
-}
+const domId = (id) => document.getElementById(id);

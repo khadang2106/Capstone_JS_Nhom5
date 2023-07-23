@@ -61,13 +61,55 @@ p {
   }
 }
 
+.btn-warning {
+  background-color: #ffab2d;
+  border-color: #ffab2d;
+  color: #212529;
+}
+.btn-warning:hover, .btn-warning:focus {
+  background-color: #ff9c07;
+  border-color: #f99500;
+  color: #212529;
+}
+
+.btn-danger {
+  background-color: #ff4c41;
+  border-color: #ff4c41;
+  color: #fff;
+}
+.btn-danger:hover, .btn-danger:focus {
+  background-color: #ff281b;
+  border-color: #ff1c0e;
+  color: #fff;
+}
+
+.btn-info {
+  background-color: #009ff9;
+  border-color: #0097ec;
+  color: #fff;
+}
+.btn-info:hover, .btn-info:focus {
+  background-color: #07a5ff;
+  border-color: #009ff9;
+  color: #fff;
+}
+
+.btn-primary {
+  background-color: #2953e8;
+  border-color: #2953e8;
+  color: #fff;
+}
+.btn-primary:hover {
+  background-color: #1740d4;
+  border-color: #163dc8;
+  color: #fff;
+}
+
 .fn-btn {
   border-radius: 1.25rem;
 }
 
 .btn-add-product {
-  color: white;
-  background-color: #2953e8;
   font-weight: 500;
 }
 
@@ -84,7 +126,6 @@ p {
   background-color: #f4f4f4;
 }
 .modal-content .modal-body .container {
-  background-color: #e1e1e1;
   border-radius: 1rem;
 }
 .modal-content .form-control {
@@ -574,6 +615,11 @@ p {
   padding: 2px 0;
 }
 
+.admin-header .navbar {
+  position: revert;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
 .product-list {
   padding-top: 100px;
   background-color: #f4f4f4;
@@ -598,4 +644,53 @@ p {
   border-top-right-radius: 1.25rem;
   background-color: white;
   box-shadow: 0 12px 23px 0 rgba(62, 73, 84, 0.2);
+}
+
+#tbdList i, #tbdList .header-nav .navbar-nav li a p, .header-nav .navbar-nav li a #tbdList p {
+  margin-right: 5px;
+}
+#tbdList button {
+  display: inline-block;
+}
+
+.product-input-form .input-field, .product-input-form .select-field {
+  width: 100%;
+  padding-bottom: 20px;
+}
+.product-input-form .input-field label, .product-input-form .select-field label {
+  font-weight: bold;
+  color: #1a1919;
+  margin-bottom: 10px;
+}
+.product-input-form .input-field label i, .product-input-form .select-field label i, .product-input-form .input-field label .header-nav .navbar-nav li a p, .product-input-form .select-field label .header-nav .navbar-nav li a p, .header-nav .navbar-nav li a .product-input-form .input-field label p, .header-nav .navbar-nav li a .product-input-form .select-field label p {
+  margin-right: 10px;
+}
+.product-input-form .input-field input, .product-input-form .select-field input, .product-input-form .select-field select {
+  width: 100%;
+  color: #9f9f9f;
+  background-color: transparent;
+  border: 0;
+  border-bottom: solid 3px rgba(255, 214, 7, 0.3);
+  padding: 1px 2px;
+  transition: all 0.4s ease;
+}
+.product-input-form .input-field input:focus + span::after, .product-input-form .select-field input:focus + span::after, .product-input-form .select-field select:focus + span::after {
+  width: 100%;
+}
+.product-input-form .input-field span, .product-input-form .select-field span {
+  position: relative;
+  display: block;
+}
+.product-input-form .input-field span::after, .product-input-form .select-field span::after {
+  content: "";
+  background-color: #ffd507;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 0%;
+  transition: all 0.4s ease;
+}
+.product-input-form .select-field select {
+  color: #7a7a7a;
 }/*# sourceMappingURL=style.css.map */
