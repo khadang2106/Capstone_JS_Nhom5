@@ -1,0 +1,5 @@
+@mixin btnColor($bgColor, $borderColor, $color) {
+  background-color: $bgColor;
+  border-color: $borderColor;
+  color: $color;
+}

@@ -30,11 +30,11 @@
   </head>
   <body>
     <!-- Header -->
-    <header class="header-nav">
+    <header class="header-nav admin-header">
       <nav class="navbar navbar-expand-md navbar-dark">
         <!-- Brand -->
         <div class="nav-logo">
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand d-flex align-content-center" href="#">
             <i class="fab fa-magento"></i>
             <span>CYBER STORE</span>
           </a>
@@ -70,7 +70,7 @@
       </nav>
     </header>
     <!-- Product List -->
-    <section class="product-list pb-3">
+    <section class="product-list p-3">
       <div class="container">
         <h2>Product Lists</h2>
         <!-- Nav pills -->
@@ -110,7 +110,7 @@
             <div class="table-product" id="tableProduct">
               <table class="table table-bordered table-responsive table-hover">
                 <thead class="thead-dark">
-                  <tr>
+                  <tr class="text-center">
                     <th>#</th>
                     <th>Name</th>
                     <th>Price</th>
@@ -133,7 +133,7 @@
         </div>
       </div>
 
-      <!-- Adding Product Modal -->
+      <!-- Product Input Form -->
       <div class="modal fade" id="addingModal">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -147,106 +147,97 @@
 
             <!-- Modal body -->
             <div class="modal-body">
-              <div class="container p-3">
-                <div class="form-group">
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <i class="fa fa-mobile-alt"></i>
-                      </span>
-                    </div>
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Phone's Name"
-                    />
-                  </div>
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <i class="fa fa-dollar-sign"></i>
-                      </span>
-                    </div>
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Phone's Price"
-                    />
-                  </div>
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <i class="fa fa-arrows-alt"></i>
-                      </span>
-                    </div>
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Phone's Screen"
-                    />
-                  </div>
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <i class="fa fa-camera"></i>
-                      </span>
-                    </div>
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Phone's Front Cam"
-                    />
-                  </div>
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <i class="fa fa-camera-retro"></i>
-                      </span>
-                    </div>
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Phone's Back Cam"
-                    />
-                  </div>
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <i class="fa fa-file-image"></i>
-                      </span>
-                    </div>
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Phone's Image"
-                    />
-                  </div>
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <i class="fa fa-comment-alt"></i>
-                      </span>
-                    </div>
-                    <textarea
-                      class="form-control"
-                      id=""
-                      cols="30"
-                      rows="3"
-                      placeholder="Description"
-                    ></textarea>
-                  </div>
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <i class="fa fa-signature"></i>
-                      </span>
-                    </div>
-                    <select class="form-control" id="">
-                      <option>Choose Brand</option>
-                      <option>Apple</option>
-                      <option>Samsung</option>
-                    </select>
-                  </div>
+              <div class="container product-input-form">
+                <div class="input-field">
+                  <label><i class="fa fa-mobile-alt"></i>Name</label>
+                  <input
+                    required=""
+                    type="text"
+                    id=""
+                    placeholder="Phone's Name"
+                  />
+                  <span></span>
+                </div>
+                <div class="input-field">
+                  <label><i class="fa fa-tag"></i>Price</label>
+                  <input
+                    required=""
+                    type="text"
+                    id=""
+                    placeholder="Phone's Price"
+                  />
+                  <span></span>
+                </div>
+                <div class="input-field">
+                  <label
+                    ><i
+                      class="fa-solid fa-up-right-and-down-left-from-center"
+                    ></i
+                    >Screen</label
+                  >
+                  <input
+                    required=""
+                    type="text"
+                    id=""
+                    placeholder="Phone's Screen Size"
+                  />
+                  <span></span>
+                </div>
+                <div class="input-field">
+                  <label><i class="fa-solid fa-camera"></i>Back Camera</label>
+                  <input
+                    required=""
+                    type="text"
+                    id=""
+                    placeholder="Back Camera's MP"
+                  />
+                  <span></span>
+                </div>
+                <div class="input-field">
+                  <label
+                    ><i class="fa-solid fa-camera-rotate"></i>Front
+                    Camera</label
+                  >
+                  <input
+                    required=""
+                    type="text"
+                    id=""
+                    placeholder="Front Camera's MP"
+                  />
+                  <span></span>
+                </div>
+                <div class="input-field">
+                  <label><i class="fa-regular fa-image"></i>Image</label>
+                  <input
+                    required=""
+                    type="text"
+                    id=""
+                    placeholder="Phone's Image URL"
+                  />
+                  <span></span>
+                </div>
+                <div class="input-field">
+                  <label
+                    ><i class="fa-regular fa-comment"></i>Description</label
+                  >
+                  <input
+                    required=""
+                    type="text"
+                    id=""
+                    placeholder="Short describe of Phone"
+                  />
+                  <span></span>
+                </div>
+                <div class="select-field">
+                  <label><i class="fa-solid fa-bars"></i>Type</label>
+                  <select id="">
+                    <option value="">Select brand</option>
+                    <option value="">Iphone</option>
+                    <option value="">Samsung</option>
+                    <option value="">Xiaomi</option>
+                    <option value="">Oppo</option>
+                  </select>
+                  <span></span>
                 </div>
               </div>
             </div>
@@ -254,7 +245,11 @@
             <!-- Modal footer -->
             <div class="modal-footer">
               <div class="modal-footer-btn"></div>
-              <button type="button" class="btn btn-danger" data-dismiss="modal">
+              <button
+                type="button"
+                class="btn btn-danger fn-btn"
+                data-dismiss="modal"
+              >
                 Close
               </button>
             </div>
@@ -321,7 +316,10 @@
                 </a>
               </li>
               <li>
-                <a href="https://www.facebook.com/messages/t/6007860205969625">
+                <a
+                  href="https://www.facebook.com/messages/t/6007860205969625"
+                  target="_blank"
+                >
                   <i class="fab fa-facebook-messenger"></i>
                   <span>http://messages.com</span>
                 </a>
