@@ -25,8 +25,8 @@ const renderUI = (data) => {
           </td>
           <td>${element.desc}</td>
           <td>${element.type}</td>
-          <td>
-            <button type="button" class="btn btn-danger fn-btn"><i class="fa-solid fa-trash"></i>Delete</button>
+          <td class="text-center">
+            <button type="button" class="btn btn-danger fn-btn mb-1"><i class="fa-solid fa-trash"></i>Delete</button>
             <button type="button" class="btn btn-warning fn-btn"><i class="fa-solid fa-wrench"></i>Modify</button>
           </td>
         </tr>
