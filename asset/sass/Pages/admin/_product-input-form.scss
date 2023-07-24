@@ -12,7 +12,7 @@
     }
     input {
       width: 100%;
-      color: $cl-grey-2;
+      color: $cl-grey-4;
       background-color: transparent;
       border: 0;
       border-bottom: solid 3px $cl-primary-opacity;
@@ -43,7 +43,6 @@
     @extend .input-field;
     select {
       @extend input;
-      color: $cl-grey-3;
     }
   }
 }

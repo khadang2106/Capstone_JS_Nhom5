@@ -153,7 +153,7 @@
                   <input
                     required=""
                     type="text"
-                    id=""
+                    id="phoneName"
                     placeholder="Phone's Name"
                   />
                   <span></span>
@@ -163,7 +163,7 @@
                   <input
                     required=""
                     type="text"
-                    id=""
+                    id="phonePrice"
                     placeholder="Phone's Price"
                   />
                   <span></span>
@@ -178,7 +178,7 @@
                   <input
                     required=""
                     type="text"
-                    id=""
+                    id="phoneScreen"
                     placeholder="Phone's Screen Size"
                   />
                   <span></span>
@@ -188,7 +188,7 @@
                   <input
                     required=""
                     type="text"
-                    id=""
+                    id="phoneBackCam"
                     placeholder="Back Camera's MP"
                   />
                   <span></span>
@@ -201,7 +201,7 @@
                   <input
                     required=""
                     type="text"
-                    id=""
+                    id="phoneFrontCam"
                     placeholder="Front Camera's MP"
                   />
                   <span></span>
@@ -211,7 +211,7 @@
                   <input
                     required=""
                     type="text"
-                    id=""
+                    id="phoneImg"
                     placeholder="Phone's Image URL"
                   />
                   <span></span>
@@ -223,19 +223,19 @@
                   <input
                     required=""
                     type="text"
-                    id=""
+                    id="phoneDesc"
                     placeholder="Short describe of Phone"
                   />
                   <span></span>
                 </div>
                 <div class="select-field">
                   <label><i class="fa-solid fa-bars"></i>Type</label>
-                  <select id="">
-                    <option value="">Select brand</option>
-                    <option value="">Iphone</option>
-                    <option value="">Samsung</option>
-                    <option value="">Xiaomi</option>
-                    <option value="">Oppo</option>
+                  <select id="selcBrand">
+                    <option value="Select brand">Select brand</option>
+                    <option value="Apple">Apple</option>
+                    <option value="Samsung">Samsung</option>
+                    <option value="Xiaomi">Xiaomi</option>
+                    <option value="Oppo">Oppo</option>
                   </select>
                   <span></span>
                 </div>
@@ -362,8 +362,8 @@
       referrerpolicy="no-referrer"
     ></script>
     <script src="../controller/method.js"></script>
-    <script src="../models/product.js"></script>
-    <script src="../services/api.js"></script>
-    <script src="../controller/admin.js"></script>
+    <!-- <script src="../models/product.js"></script>
+    <script src="../services/api.js"></script> -->
+    <script type="module" src="../controller/admin.js"></script>
   </body>
 </html>
