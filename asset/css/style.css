@@ -615,9 +615,15 @@ p {
   padding: 2px 0;
 }
 
+.admin-header {
+  background-color: rgba(0, 0, 0, 0.6);
+}
 .admin-header .navbar {
   position: revert;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: revert;
+}
+.admin-header .container {
+  max-width: 1240px;
 }
 
 .product-list {
@@ -650,7 +656,8 @@ p {
   margin-right: 5px;
 }
 #tbdList button {
-  display: inline-block;
+  display: block;
+  margin: auto;
 }
 
 .product-input-form .input-field, .product-input-form .select-field {
