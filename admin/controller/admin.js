@@ -32,7 +32,7 @@ const renderUI = (data) => {
           <td class="text-center">
             <button type="button" class="btn btn-danger fn-btn mb-1" onclick="delProduct('${
               element.id
-            }')"><i class="fa-solid fa-trash"></i>Delete</button>
+            }')" data-toggle="modal" data-target="#confirmation"><i class="fa-solid fa-trash"></i>Delete</button>
             <button type="button" data-toggle="modal" data-target="#addingModal" class="btn btn-warning fn-btn" onclick="modProduct('${
               element.id
             }')"><i class="fa-solid fa-wrench"></i>Modify</button>
@@ -138,6 +138,7 @@ window.addProduct = () => {
   promise
     .then(() => {
       getListProduct();
+      alert(`${product.name} has been added successfully!`);
       document.querySelectorAll('.modal-footer button')[1].click();
     })
     .catch((error) => {
@@ -149,11 +150,30 @@ window.addProduct = () => {
  * Delete Product
  */
 window.delProduct = (id) => {
+  const promise = api.getProductById(id);
+  promise
+    .then((result) => {
+      const content = `Are you sure you want to remove <span class="font-weight-bold font-italic text-success">${result.data.name}</span> from the list?`;
+      const modalBtn = `
+        <button type="button" class="btn btn-info fn-btn" onclick="confirmDelete('${id}')">Yes</button>
+        <button id="btnCloseBox" type="button" class="btn btn-danger fn-btn" data-dismiss="modal">No</button>
+      `;
+
+      domId('modalBodyConfirm').innerHTML = content;
+      domId('modalFooterConfirm').innerHTML = modalBtn;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+window.confirmDelete = (id) => {
   const promise = api.delProductApi(id);
   promise
     .then((result) => {
-      alert(`${result.data.name} has been deleted!`);
+      alert(`${result.data.name} has been deleted successfully!`);
       getListProduct();
+      document.querySelectorAll('#modalFooterConfirm button')[1].click();
     })
     .catch((error) => {
       console.log(error);

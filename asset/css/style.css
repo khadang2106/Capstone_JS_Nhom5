@@ -631,13 +631,18 @@ p {
   background-color: #f4f4f4;
 }
 .product-list .nav-pills {
-  background-color: #e1e1e1;
+  background-color: #bdbdbd;
   border-radius: 5rem;
   padding: 10px;
+}
+.product-list .nav-item:hover .nav-link {
+  color: #ffd507;
 }
 .product-list .nav-item .nav-link {
   padding: 8px 15px;
   border-radius: 5rem;
+  color: black;
+  transition: all 0.3s;
 }
 .product-list .nav-item .nav-link.active {
   color: black;
@@ -658,6 +663,10 @@ p {
 #tbdList button {
   display: block;
   margin: auto;
+}
+
+#confirmation .modal-content {
+  border-radius: 1.5rem;
 }
 
 .product-input-form .input-field, .product-input-form .select-field {
