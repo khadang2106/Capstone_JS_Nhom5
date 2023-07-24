@@ -38,6 +38,11 @@
         transition: all 0.4s ease;
       }
     }
+    .error-announce {
+      color: red;
+      margin-left: 2px;
+      display: none;
+    }
   }
   .select-field {
     @extend .input-field;

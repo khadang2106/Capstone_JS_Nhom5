@@ -706,4 +706,9 @@ p {
   height: 3px;
   width: 0%;
   transition: all 0.4s ease;
+}
+.product-input-form .input-field .error-announce, .product-input-form .select-field .error-announce {
+  color: red;
+  margin-left: 2px;
+  display: none;
 }/*# sourceMappingURL=style.css.map */

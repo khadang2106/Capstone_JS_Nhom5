@@ -1,7 +1,9 @@
 import { Service } from '../services/api.js';
 import { Product } from '../models/product.js';
+import { Validation } from '../models/validation.js';
 
 const api = new Service();
+const valid = new Validation();
 
 domId('btnAdd').onclick = function () {
   document.querySelector(
@@ -139,6 +141,7 @@ window.addProduct = () => {
     .then(() => {
       getListProduct();
       alert(`${product.name} has been added successfully!`);
+      domId('selcFilter').value = 'Mặc định';
       document.querySelectorAll('.modal-footer button')[1].click();
     })
     .catch((error) => {
@@ -173,6 +176,7 @@ window.confirmDelete = (id) => {
     .then((result) => {
       alert(`${result.data.name} has been deleted successfully!`);
       getListProduct();
+      domId('selcFilter').value = 'Mặc định';
       document.querySelectorAll('#modalFooterConfirm button')[1].click();
     })
     .catch((error) => {
@@ -217,6 +221,7 @@ window.updateProduct = (id) => {
     .then(() => {
       getListProduct();
       alert(`Your product has been updated successfully!`);
+      domId('selcFilter').value = 'Mặc định';
       document.querySelectorAll('.modal-footer button')[1].click();
     })
     .catch((error) => {
