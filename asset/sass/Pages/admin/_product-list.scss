@@ -6,9 +6,18 @@
     border-radius: 5rem;
     padding: 10px;
   }
+  .nav-item {
+    &:hover {
+      .nav-link {
+        color: #ffd507;
+      }
+    }
+  }
   .nav-item .nav-link {
     padding: 8px 15px;
     border-radius: 5rem;
+    color: black;
+    transition: all 0.3s;
   }
   .nav-item .nav-link.active {
     color: black;
@@ -32,5 +41,10 @@
   button {
     display: block;
     margin: auto;
+  }
+}
+#confirmation {
+  .modal-content {
+    border-radius: 1.5rem;
   }
 }
