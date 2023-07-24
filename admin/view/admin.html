@@ -104,6 +104,34 @@
           </div>
         </div>
 
+        <!-- Search bar -->
+        <div class="search-bar">
+          <div class="row mb-2">
+            <div class="col-7">
+              <div class="input-group w-75">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Search by Phone's Name"
+                  id="searchName"
+                />
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="fa fa-search"></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="col-5 text-right">
+              <select class="custom-select w-75" id="selcFilter">
+                <option selected>Mặc định</option>
+                <option value="ascending">Giá tăng dần</option>
+                <option value="descending">Giá giảm dần</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
         <!-- Tab panes -->
         <div class="tab-content">
           <div class="tab-pane container active" id="phone">

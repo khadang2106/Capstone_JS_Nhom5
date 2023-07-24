@@ -223,3 +223,63 @@ window.updateProduct = (id) => {
       console.log(error);
     });
 };
+
+/**
+ * Search Product by name
+ */
+const getArrSearch = (keyword) => {
+  const promise = api.getListProductApi();
+  promise
+    .then((result) => {
+      const arrProduct = result.data;
+
+      const filtered = arrProduct.filter((element) => {
+        const productNameLowerCase = element.name.trim().toLowerCase();
+        const keyWordLowerCase = keyword.trim().toLowerCase();
+        if (productNameLowerCase.indexOf(keyWordLowerCase) !== -1) {
+          return true;
+        }
+        return false;
+      });
+
+      renderUI(filtered);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+const searchProduct = () => {
+  const keyword = domId('searchName').value;
+  getArrSearch(keyword);
+};
+
+domId('searchName').addEventListener('keyup', searchProduct);
+
+/**
+ * Filter Product by price
+ */
+domId('selcFilter').onchange = () => {
+  const selc = domId('selcFilter').value;
+  filterByPrice(selc);
+};
+
+const filterByPrice = (selc) => {
+  const promise = api.getListProductApi();
+  promise
+    .then((result) => {
+      const arrProduct = result.data;
+      if (selc === 'ascending') {
+        arrProduct.sort((a, b) => a.price - b.price);
+        renderUI(arrProduct);
+      } else if (selc === 'descending') {
+        arrProduct.sort((a, b) => b.price - a.price);
+        renderUI(arrProduct);
+      } else {
+        renderUI(arrProduct);
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
