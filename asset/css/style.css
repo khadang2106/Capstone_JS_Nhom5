@@ -3,6 +3,17 @@
   padding: 0;
   box-sizing: border-box;
   outline: none;
+  /* Chrome, Safari, Edge, Opera */
+  /* Firefox */
+}
+* input::-webkit-outer-spin-button, .product-input-form .select-field select::-webkit-outer-spin-button,
+* input::-webkit-inner-spin-button,
+.product-input-form .select-field select::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+* input[type=number], .product-input-form .select-field select[type=number] {
+  -moz-appearance: textfield;
 }
 
 p {
