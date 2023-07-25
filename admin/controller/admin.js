@@ -10,6 +10,7 @@ domId('btnAdd').onclick = function () {
     '.modal-footer-btn'
   ).innerHTML = `<button type="button" class="btn btn-info fn-btn" onclick="addProduct()">Add</button>`;
 
+  resetError();
   resetFormValues();
 };
 
@@ -23,7 +24,7 @@ const renderUI = (data) => {
       <tr>
           <td>${index + 1}</td>
           <td>${element.name}</td>
-          <td>${element.price}</td>
+          <td>$${element.price}</td>
           <td>
             <img src="${
               element.img
@@ -64,70 +65,30 @@ window.onload = () => getListProduct();
 const getFormValues = (id = '') => {
   const name = domId('phoneName').value;
   const price = domId('phonePrice').value;
-  const screen = domId('phoneScreen').value;
+  const screen = domId('phoneScreen').value + `"`;
   const backCamera = domId('phoneBackCam').value;
   const frontCamera = domId('phoneFrontCam').value;
   const img = domId('phoneImg').value;
   const desc = domId('phoneDesc').value;
   const type = domId('selcBrand').value;
 
-  const product = new Product(
-    id,
-    name,
-    price,
-    screen,
-    backCamera,
-    frontCamera,
-    img,
-    desc,
-    type
-  );
-
-  return product;
-};
-
-const fillFormValues = (
-  name = '',
-  price = '',
-  screen = '',
-  backCamera = '',
-  frontCamera = '',
-  img = '',
-  desc = '',
-  type = 'Select brand'
-) => {
-  domId('phoneName').value = name;
-  domId('phonePrice').value = price;
-  domId('phoneScreen').value = screen;
-  domId('phoneBackCam').value = backCamera;
-  domId('phoneFrontCam').value = frontCamera;
-  domId('phoneImg').value = img;
-  domId('phoneDesc').value = desc;
-  domId('selcBrand').value = type;
-};
-
-const resetFormValues = () => {
-  const name = domId('phoneName').value;
-  const price = domId('phonePrice').value;
-  const screen = domId('phoneScreen').value;
-  const backCamera = domId('phoneBackCam').value;
-  const frontCamera = domId('phoneFrontCam').value;
-  const img = domId('phoneImg').value;
-  const desc = domId('phoneDesc').value;
-  const type = domId('selcBrand').value;
-
-  if (
-    name !== '' &&
-    price !== '' &&
-    screen !== '' &&
-    backCamera !== '' &&
-    frontCamera !== '' &&
-    img !== '' &&
-    desc !== '' &&
-    type !== 'Select brand'
-  ) {
-    fillFormValues();
+  checkWhenType();
+  if (checkValid()) {
+    const product = new Product(
+      id,
+      name,
+      price,
+      screen,
+      backCamera,
+      frontCamera,
+      img,
+      desc,
+      type
+    );
+    return product;
   }
+
+  return null;
 };
 
 /**
@@ -135,18 +96,21 @@ const resetFormValues = () => {
  */
 window.addProduct = () => {
   const product = getFormValues();
+  checkWhenType();
 
-  const promise = api.addProductApi(product);
-  promise
-    .then(() => {
-      getListProduct();
-      alert(`${product.name} has been added successfully!`);
-      domId('selcFilter').value = 'Mặc định';
-      document.querySelectorAll('.modal-footer button')[1].click();
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  if (product) {
+    const promise = api.addProductApi(product);
+    promise
+      .then(() => {
+        getListProduct();
+        alert(`${product.name} has been added successfully!`);
+        domId('selcFilter').value = 'Mặc định';
+        document.querySelectorAll('.modal-footer button')[1].click();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 };
 
 /**
@@ -199,7 +163,7 @@ window.modProduct = (id) => {
       fillFormValues(
         result.data.name,
         result.data.price,
-        result.data.screen,
+        result.data.screen.replace(`"`, ''),
         result.data.backCamera,
         result.data.frontCamera,
         result.data.img,
@@ -216,17 +180,19 @@ window.modProduct = (id) => {
 window.updateProduct = (id) => {
   const product = getFormValues(id);
 
-  const promise = api.updateProductApi(product);
-  promise
-    .then(() => {
-      getListProduct();
-      alert(`Your product has been updated successfully!`);
-      domId('selcFilter').value = 'Mặc định';
-      document.querySelectorAll('.modal-footer button')[1].click();
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  if (product) {
+    const promise = api.updateProductApi(product);
+    promise
+      .then(() => {
+        getListProduct();
+        alert(`Your product has been updated successfully!`);
+        domId('selcFilter').value = 'Mặc định';
+        document.querySelectorAll('.modal-footer button')[1].click();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 };
 
 /**
@@ -239,8 +205,14 @@ const getArrSearch = (keyword) => {
       const arrProduct = result.data;
 
       const filtered = arrProduct.filter((element) => {
-        const productNameLowerCase = element.name.trim().toLowerCase();
-        const keyWordLowerCase = keyword.trim().toLowerCase();
+        const productNameLowerCase = element.name
+          .trim()
+          .toLowerCase()
+          .replace(/\s/g, '');
+        const keyWordLowerCase = keyword
+          .trim()
+          .toLowerCase()
+          .replace(/\s/g, '');
         if (productNameLowerCase.indexOf(keyWordLowerCase) !== -1) {
           return true;
         }
@@ -287,4 +259,94 @@ const filterByPrice = (selc) => {
     .catch((error) => {
       console.log(error);
     });
+};
+
+/**
+ * Validation function
+ */
+const checkValid = () => {
+  const name = domId('phoneName').value;
+  const price = domId('phonePrice').value;
+  const screen = domId('phoneScreen').value;
+  const backCamera = domId('phoneBackCam').value;
+  const frontCamera = domId('phoneFrontCam').value;
+  const img = domId('phoneImg').value;
+  const desc = domId('phoneDesc').value;
+
+  let isValid = true;
+
+  //Validate Name
+  isValid &=
+    valid.checkEmpty(name, 'errorName', `(*) Product's name is required!`) &&
+    valid.checkPattern(
+      name,
+      /^[a-zA-Z0-9 ]*$/,
+      'errorName',
+      `(*) Invalid Product's name`
+    );
+
+  //Validate Price
+  isValid &= valid.checkEmpty(
+    price,
+    'errorPrice',
+    `(*) Product's price is required!`
+  );
+
+  //Validate Screen
+  isValid &= valid.checkEmpty(
+    screen,
+    'errorScreen',
+    `(*) Product's screen size is required!`
+  );
+
+  //Validate Back Camera
+  isValid &= valid.checkEmpty(
+    backCamera,
+    'errorBackCam',
+    `(*) Back Camera's Resolution is required!`
+  );
+
+  //Validate Front Camera
+  isValid &= valid.checkEmpty(
+    frontCamera,
+    'errorFrontCam',
+    `(*) Front Camera's Resolution is required!`
+  );
+
+  //Validate Img
+  isValid &=
+    valid.checkEmpty(img, 'errorImg', `(*) Product's image is required!`) &&
+    valid.checkPattern(
+      img,
+      /(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/,
+      'errorImg',
+      `(*) Invalid Img's URL`
+    );
+
+  //Validate Description
+  isValid &= valid.checkEmpty(
+    desc,
+    'errorDesc',
+    `(*) Product's description is required!`
+  );
+
+  //Validate Selection
+  isValid &= valid.checkSelc(
+    'selcBrand',
+    'errorSelc',
+    `(*) Product's brand is required!`
+  );
+
+  return isValid;
+};
+
+const checkWhenType = () => {
+  domId('phoneName').addEventListener('keyup', checkValid);
+  domId('phonePrice').addEventListener('keyup', checkValid);
+  domId('phoneScreen').addEventListener('keyup', checkValid);
+  domId('phoneBackCam').addEventListener('keyup', checkValid);
+  domId('phoneFrontCam').addEventListener('keyup', checkValid);
+  domId('phoneImg').addEventListener('keyup', checkValid);
+  domId('phoneDesc').addEventListener('keyup', checkValid);
+  domId('selcBrand').addEventListener('change', checkValid);
 };
