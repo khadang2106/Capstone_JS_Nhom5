@@ -1,6 +1,10 @@
 .admin-header {
+  background-color: rgba(0, 0, 0, 0.6);
   .navbar {
     position: revert;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: revert;
+  }
+  .container {
+    max-width: 1240px;
   }
 }

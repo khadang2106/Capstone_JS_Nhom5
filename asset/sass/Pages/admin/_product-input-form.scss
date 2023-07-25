@@ -12,7 +12,7 @@
     }
     input {
       width: 100%;
-      color: $cl-grey-2;
+      color: $cl-grey-4;
       background-color: transparent;
       border: 0;
       border-bottom: solid 3px $cl-primary-opacity;
@@ -38,12 +38,16 @@
         transition: all 0.4s ease;
       }
     }
+    .error-announce {
+      color: red;
+      margin-left: 2px;
+      display: none;
+    }
   }
   .select-field {
     @extend .input-field;
     select {
       @extend input;
-      color: $cl-grey-3;
     }
   }
 }

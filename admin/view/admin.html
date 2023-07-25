@@ -32,40 +32,40 @@
     <!-- Header -->
     <header class="header-nav admin-header">
       <nav class="navbar navbar-expand-md navbar-dark">
-        <!-- Brand -->
-        <div class="nav-logo">
-          <a class="navbar-brand d-flex align-content-center" href="#">
-            <i class="fab fa-magento"></i>
-            <span>CYBER STORE</span>
-          </a>
-        </div>
-
-        <!-- Toggler/collapsibe Button -->
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#collapsibleNavbar"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <!-- Navbar links -->
-        <div class="collapse navbar-collapse" id="collapsibleNavbar">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="../../index.html">
-                <i class="fa fa-home"></i>
-                <p>HOME</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../../customer/view/customer.html">
-                <i class="fa fa-store"></i>
-                <p>STORE</p>
-              </a>
-            </li>
-          </ul>
+        <div class="container">
+          <!-- Brand -->
+          <div class="nav-logo">
+            <a class="navbar-brand d-flex align-content-center" href="#">
+              <i class="fab fa-magento"></i>
+              <span>CYBER STORE</span>
+            </a>
+          </div>
+          <!-- Toggler/collapsibe Button -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#collapsibleNavbar"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <!-- Navbar links -->
+          <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="../../index.html">
+                  <i class="fa fa-home"></i>
+                  <p>HOME</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../../customer/view/customer.html">
+                  <i class="fa fa-store"></i>
+                  <p>STORE</p>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </nav>
     </header>
@@ -101,6 +101,34 @@
             >
               Add Product
             </button>
+          </div>
+        </div>
+
+        <!-- Search bar -->
+        <div class="search-bar">
+          <div class="row mb-2">
+            <div class="col-7">
+              <div class="input-group w-75">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Search by Phone's Name"
+                  id="searchName"
+                />
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="fa fa-search"></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="col-5 text-right">
+              <select class="custom-select w-75" id="selcFilter">
+                <option selected>Mặc định</option>
+                <option value="ascending">Giá tăng dần</option>
+                <option value="descending">Giá giảm dần</option>
+              </select>
+            </div>
           </div>
         </div>
 
@@ -153,20 +181,22 @@
                   <input
                     required=""
                     type="text"
-                    id=""
-                    placeholder="Phone's Name"
+                    id="phoneName"
+                    placeholder="Product's Name"
                   />
                   <span></span>
+                  <span class="error-announce" id="errorName"></span>
                 </div>
                 <div class="input-field">
                   <label><i class="fa fa-tag"></i>Price</label>
                   <input
                     required=""
-                    type="text"
-                    id=""
-                    placeholder="Phone's Price"
+                    type="number"
+                    id="phonePrice"
+                    placeholder="Product's Price"
                   />
                   <span></span>
+                  <span class="error-announce" id="errorPrice"></span>
                 </div>
                 <div class="input-field">
                   <label
@@ -177,21 +207,23 @@
                   >
                   <input
                     required=""
-                    type="text"
-                    id=""
-                    placeholder="Phone's Screen Size"
+                    type="number"
+                    id="phoneScreen"
+                    placeholder="Product's Screen Size"
                   />
                   <span></span>
+                  <span class="error-announce" id="errorScreen"></span>
                 </div>
                 <div class="input-field">
                   <label><i class="fa-solid fa-camera"></i>Back Camera</label>
                   <input
                     required=""
                     type="text"
-                    id=""
+                    id="phoneBackCam"
                     placeholder="Back Camera's MP"
                   />
                   <span></span>
+                  <span class="error-announce" id="errorBackCam"></span>
                 </div>
                 <div class="input-field">
                   <label
@@ -201,20 +233,22 @@
                   <input
                     required=""
                     type="text"
-                    id=""
+                    id="phoneFrontCam"
                     placeholder="Front Camera's MP"
                   />
                   <span></span>
+                  <span class="error-announce" id="errorFrontCam"></span>
                 </div>
                 <div class="input-field">
                   <label><i class="fa-regular fa-image"></i>Image</label>
                   <input
                     required=""
                     type="text"
-                    id=""
-                    placeholder="Phone's Image URL"
+                    id="phoneImg"
+                    placeholder="Product's Image URL"
                   />
                   <span></span>
+                  <span class="error-announce" id="errorImg"></span>
                 </div>
                 <div class="input-field">
                   <label
@@ -223,21 +257,23 @@
                   <input
                     required=""
                     type="text"
-                    id=""
-                    placeholder="Short describe of Phone"
+                    id="phoneDesc"
+                    placeholder="Short describe of Product"
                   />
                   <span></span>
+                  <span class="error-announce" id="errorDesc"></span>
                 </div>
                 <div class="select-field">
                   <label><i class="fa-solid fa-bars"></i>Type</label>
-                  <select id="">
-                    <option value="">Select brand</option>
-                    <option value="">Iphone</option>
-                    <option value="">Samsung</option>
-                    <option value="">Xiaomi</option>
-                    <option value="">Oppo</option>
+                  <select id="selcBrand">
+                    <option value="Select brand">Select brand</option>
+                    <option value="Apple">Apple</option>
+                    <option value="Samsung">Samsung</option>
+                    <option value="Xiaomi">Xiaomi</option>
+                    <option value="Oppo">Oppo</option>
                   </select>
                   <span></span>
+                  <span class="error-announce" id="errorSelc"></span>
                 </div>
               </div>
             </div>
@@ -336,6 +372,29 @@
         >
       </div>
     </footer>
+
+    <!-- Confirmation Modal -->
+    <div class="modal fade" id="confirmation">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title font-weight-bold font-italic text-danger">
+              Warning
+            </h4>
+            <button type="button" class="close" data-dismiss="modal">
+              &times;
+            </button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body" id="modalBodyConfirm"></div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer" id="modalFooterConfirm"></div>
+        </div>
+      </div>
+    </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script
@@ -362,8 +421,8 @@
       referrerpolicy="no-referrer"
     ></script>
     <script src="../controller/method.js"></script>
-    <script src="../models/product.js"></script>
-    <script src="../services/api.js"></script>
-    <script src="../controller/admin.js"></script>
+    <!-- <script src="../models/product.js"></script>
+    <script src="../services/api.js"></script> -->
+    <script type="module" src="../controller/admin.js"></script>
   </body>
 </html>
