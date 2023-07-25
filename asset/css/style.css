@@ -233,8 +233,10 @@ p {
   top: 12%;
   right: 0px;
   z-index: 20;
+  height: 90%;
+  overflow: auto;
   background-color: #f0ecec;
-  padding: 20px 0px 15% 30px;
+  padding: 20px 0px 40px 30px;
   border-radius: 10px;
   transform: translateX(130%);
   transition: all 1s;
@@ -251,8 +253,8 @@ p {
 .header-nav .table-pay .cart-product .cart-product-img img {
   width: 10rem;
   position: absolute;
-  top: -40px;
-  left: 15%;
+  top: 0;
+  left: 20%;
 }
 .header-nav .table-pay .cart-product .cart-product-info {
   display: flex;
@@ -262,9 +264,19 @@ p {
 }
 .header-nav .table-pay .cart-product .cart-product-info a {
   color: #E80505;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: all 0.5s;
+}
+.header-nav .table-pay .cart-product .cart-product-info a:hover {
+  transform: scale(1.2);
 }
 .header-nav .table-pay .cart-temporary {
   margin: 30px 0;
+}
+.header-nav .table-pay .cart-temporary .temporary-quantity {
+  font-size: 15px;
+  margin-top: 10px;
 }
 .header-nav .table-pay .cart-temporary .temporary-quantity h5 {
   display: inline;
@@ -283,16 +295,25 @@ p {
   margin: 0 10px;
 }
 .header-nav .table-pay .cart-temporary .temporary-quantity .temporary-price {
-  margin-left: 50%;
+  margin-left: 45%;
+}
+.header-nav .table-pay .cart-temporary .temporary-quantity .temporary-price span {
+  font-size: 1.3rem;
+  color: #207bb6;
 }
 .header-nav .table-pay .cart-total {
   margin-bottom: 25px;
+  font-size: 18px;
 }
 .header-nav .table-pay .cart-total th {
   padding: 10px 0;
 }
 .header-nav .table-pay .cart-total td {
-  padding: 0 149%;
+  padding: 0 110%;
+  color: #e42d3f;
+}
+.header-nav .table-pay .cart-btn {
+  margin-top: 30px;
 }
 .header-nav .table-pay .cart-btn .cart-continue, .header-nav .table-pay .cart-btn .cart-pay, .header-nav .table-pay .cart-btn .cart-emmpty {
   padding: 5px 20px;
@@ -314,6 +335,7 @@ p {
 .header-nav .table-pay .cart-btn .cart-emmpty {
   background-color: #E80505;
   border: 1px #E80505 solid;
+  margin-right: 2rem;
 }
 .header-nav .table-pay .cart-btn .cart-emmpty i, .header-nav .table-pay .cart-btn .cart-emmpty .navbar-nav li a p, .header-nav .navbar-nav li a .table-pay .cart-btn .cart-emmpty p {
   margin-right: 15px;
