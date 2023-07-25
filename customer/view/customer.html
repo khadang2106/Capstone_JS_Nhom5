@@ -50,7 +50,7 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" style="cursor: pointer" onclick="openTableCart()" id="cart">
-              <i class="fa fa-cart-plus nav-item3"><span class="count-cart">0</span></i>
+              <i class="fa fa-cart-plus nav-item3"><span class="count-cart" id="countShowcart"></span></i>
               <p>CART</p>
             </a>
           </li>
@@ -63,44 +63,52 @@
         <h2>Shopping Cart</h2>
         <p>An overview of your selected products.</p>
       </div>
-      <div class="cart-product row">
-        <div class="cart-product-img col-6" style="width: 20rem">
-          <img src="../../asset/img/SP_Iphone_13.png" alt="" />
-        </div>
-        <div class="cart-product-info col-6">
-          <h6>Tên SP</h6>
-          <p>screen : 68</p>
-          <p>Back Camera : 2 camera 12 MP</p>
-          <p>Front Camera : 7 MP</p>
-          <a href="#">remove</a>
-        </div>
-      </div>
-      <div class="cart-temporary">
-        <div class="temporary-quantity">
-          <h5>Quantity :</h5>
-          <a><i class="fa fa-minus-circle"></i></a>
-          <span class="temporary-quality">1</span>
-          <a><i class="fa fa-plus-circle"></i></a>
-          <span class="temporary-price">$2000</span>
-        </div>
+      <div id="showInfoProduct">
+        <!-- <div class="item">
+          <div class="cart-product row">
+            <div class="cart-product-img col-6" style="width: 20rem">
+              <img src="../../asset/img/SP_Apple_Watch.png" alt="" id="imgShowCart" />
+            </div>
+            <div class="cart-product-info col-6">
+              <h6 id="nameShowCart">Tên SP</h6>
+              <p id="screenShowcart">screen : </p>
+              <p id="backShowCart">Back Camera :</p>
+              <p id="frontShowCart">Front Camera : </p>
+              <a href="#">remove</a>
+            </div>
+          </div>
+          <div class="cart-temporary">
+            <div class="temporary-quantity">
+              <h5>Quantity :</h5>
+              <a>
+                <i class="fa fa-minus-circle"></i>
+              </a>
+              <span class="temporary-quality" id="qualityShowCart"></span>
+              <a>
+                <i class="fa fa-plus-circle"></i>
+              </a>
+              <span class="temporary-price"><span id="totalShowCart"></span></span>
+            </div>
+          </div>
+        </div> -->
       </div>
       <table class="cart-total">
         <tbody>
           <tr>
             <th>Subtotal</th>
-            <td>$2000</td>
+            <td id="totalProduct">2000</td>
           </tr>
           <tr>
             <th>Shipping (estimated)</th>
-            <td>$10</td>
+            <td id="totalShip">2000</td>
           </tr>
           <tr>
             <th>Tax (estimated)</th>
-            <td>$200</td>
+            <td id="totalTax">2000</td>
           </tr>
           <tr>
             <th>Total</th>
-            <td>$2210</td>
+            <td id="totalItem">2000</td>
           </tr>
         </tbody>
       </table>
@@ -108,7 +116,7 @@
         <button class="cart-continue" onclick="continueShopping()">
           Continue Shopping
         </button>
-        <button class="cart-emmpty">
+        <button class="cart-emmpty" onclick="emptyCart()">
           <i class="fa fa-trash-alt"></i>Empty Cart
         </button>
         <button class="cart-pay">Pay Now</button>
@@ -165,12 +173,12 @@
   <!-- Product -->
   <section class="products container">
     <div class="opption">
-      <select name="" id="">
-        <option value="">All Brand</option>
-        <option value="">Apple</option>
-        <option value="">SamSung</option>
-        <option value="">Xiaomi</option>
-        <option value="">Oppo</option>
+      <select name="" id="selcOption">
+        <option value="all">All Brand</option>
+        <option value="Apple">Apple</option>
+        <option value="Samsung">SamSung</option>
+        <option value="Xiaomi">Xiaomi</option>
+        <option value="Oppo">Oppo</option>
       </select>
     </div>
     <div class="row" id="tableShowProduct">
@@ -497,9 +505,8 @@
     integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <!-- Style JS -->
-  <script src="../models/product.js"></script>
-  <script src="../service/api.js"></script>
-  <script src="../controller/main.js"></script>
+  <!-- <script src="../service/api.js"></script> -->
+  <script type="module" src="../controller/main.js"></script>
 </body>
 
 </html>
