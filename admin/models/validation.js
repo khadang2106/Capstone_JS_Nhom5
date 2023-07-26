@@ -27,5 +27,29 @@ export class Validation {
     showError(errorId, mess);
     return false;
   };
+
+  checkLength = (value, errorID, mess, max, min = 1) => {
+    if (
+      min <= value.trim().replace(/\s/g, '').length &&
+      value.trim().replace(/\s/g, '').length <= max
+    ) {
+      hideError(errorID);
+      return true;
+    }
+
+    showError(errorID, mess);
+    return false;
+  };
+
+  checkLimit = (value, errorID, mess, max, min = 1) => {
+    if (min <= value && value <= max) {
+      hideError(errorID);
+      return true;
+    }
+
+    showError(errorID, mess);
+    return false;
+  };
+
   checkExist = (value, errorId, mess) => {};
 }
