@@ -229,6 +229,7 @@ p {
   right: -12px;
 }
 .header-nav .table-pay {
+  min-width: 50%;
   position: fixed;
   top: 12%;
   right: 0px;
@@ -236,7 +237,7 @@ p {
   height: 90%;
   overflow: auto;
   background-color: #f0ecec;
-  padding: 20px 0px 40px 30px;
+  padding: 30px;
   border-radius: 10px;
   transform: translateX(130%);
   transition: all 1s;
@@ -251,7 +252,7 @@ p {
   height: 160px;
 }
 .header-nav .table-pay .cart-product .cart-product-img img {
-  width: 10rem;
+  width: 8rem;
   position: absolute;
   top: 0;
   left: 20%;
@@ -295,7 +296,7 @@ p {
   margin: 0 10px;
 }
 .header-nav .table-pay .cart-temporary .temporary-quantity .temporary-price {
-  margin-left: 45%;
+  margin-left: 30%;
 }
 .header-nav .table-pay .cart-temporary .temporary-quantity .temporary-price span {
   font-size: 1.3rem;
@@ -309,7 +310,7 @@ p {
   padding: 10px 0;
 }
 .header-nav .table-pay .cart-total td {
-  padding: 0 110%;
+  padding: 0 40%;
   color: #e42d3f;
 }
 .header-nav .table-pay .cart-btn {
@@ -603,7 +604,7 @@ p {
   transition: all 1s;
 }
 .products .row .product-item .product-img .product-info .product-moreInfo {
-  margin: 46px 51%;
+  margin: 5px 51% 46px;
   transform: translateX(-50%);
   width: 60%;
 }

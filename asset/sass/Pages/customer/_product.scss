@@ -1,35 +1,25 @@
 .products {
     padding: 35px 0;
     text-align: center;
-
     .opption {
         padding-bottom: 2rem;
-
         select {
             padding: 5px 10rem 5px 10px;
             border: 1px black solid;
-        }
-
-        ;
-    }
-
-    ;
-
+        };
+    };
     .row {
         gap: 2rem;
         justify-content: space-around;
-
         .product-item {
             box-shadow: 0px 0px 2px 0px rgb(9 19 2 / 40%);
             border-radius: 30px;
             overflow: hidden;
             border: none;
             padding: 0;
-
             &:hover {
                 img {
                     animation: imgshake 1s linear 1;
-
                     @keyframes imgshake {
                         25%{transform: rotate(-3deg);}
                         50%{transform: rotate(0);}
@@ -50,7 +40,6 @@
                         transform: translateY(0);
                     }
                 }
-
                 .product-info {
                     padding: 15px 30px;
                     color: white;
@@ -69,7 +58,7 @@
                     transition: all 1s;
 
                     .product-moreInfo {
-                        margin: 46px 51%;
+                        margin: 5px 51% 46px;
                         transform: translateX(-50%);
                         width: 60%;
                         a{
@@ -87,11 +76,8 @@
                     }
                 }
             }
-        }
-
-        ;
-
-        .card-body {
+        };
+         .card-body {
             text-align: center;
 
             a {
@@ -102,25 +88,19 @@
                 color: #54d354;
                 font-size: 25px;
                 transition: all 0.5s;
-            }
-
-            ;
+            };
 
             .card-moneySell {
                 font-size: 1.2rem;
                 color: grey;
-            }
-
-            ;
+            };
 
             .card-moneyDis {
                 font-size: 1.2rem;
                 color: red;
                 text-decoration: line-through;
             }
-        }
-
-        ;
+        };
 
         .brand {
             padding: 0 30%;
@@ -130,17 +110,11 @@
                 background: rgba(196, 202, 191, 0.4);
                 border-radius: 5px;
                 padding: 2px 0;
-            }
-
-            ;
-        }
-
-        ;
+            };
+        };
     }
 
     // @media screen and (min-width: 991.98px) { 
 
     // }       
-}
-
-;
+};
