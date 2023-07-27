@@ -64,33 +64,7 @@
         <p>An overview of your selected products.</p>
       </div>
       <div id="showInfoProduct">
-        <!-- <div class="item">
-          <div class="cart-product row">
-            <div class="cart-product-img col-6" style="width: 20rem">
-              <img src="../../asset/img/SP_Apple_Watch.png" alt="" id="imgShowCart" />
-            </div>
-            <div class="cart-product-info col-6">
-              <h6 id="nameShowCart">Tên SP</h6>
-              <p id="screenShowcart">screen : </p>
-              <p id="backShowCart">Back Camera :</p>
-              <p id="frontShowCart">Front Camera : </p>
-              <a href="#">remove</a>
-            </div>
-          </div>
-          <div class="cart-temporary">
-            <div class="temporary-quantity">
-              <h5>Quantity :</h5>
-              <a>
-                <i class="fa fa-minus-circle"></i>
-              </a>
-              <span class="temporary-quality" id="qualityShowCart"></span>
-              <a>
-                <i class="fa fa-plus-circle"></i>
-              </a>
-              <span class="temporary-price"><span id="totalShowCart"></span></span>
-            </div>
-          </div>
-        </div> -->
+
       </div>
       <table class="cart-total">
         <tbody>
@@ -116,10 +90,10 @@
         <button class="cart-continue" onclick="continueShopping()">
           Continue Shopping
         </button>
-        <button class="cart-emmpty" onclick="emptyCart()">
+        <button class="cart-emmpty" id="btnEmpty" onclick="emptyCart()">
           <i class="fa fa-trash-alt"></i>Empty Cart
         </button>
-        <button class="cart-pay">Pay Now</button>
+        <button class="cart-pay" id="btnPay" data-toggle="modal" data-target="#addingModal" onclick="showTableOrder()">Pay Now</button>
       </div>
     </div>
   </header>
@@ -182,238 +156,7 @@
       </select>
     </div>
     <div class="row" id="tableShowProduct">
-      <!-- <div class="card col-xl-3 col-md-5 col-10 product-item" style="width: 18rem">
-        <div class="product-img">
-          <img src="../../asset/img/SP_Iphone_13.png" class="card-img-top" alt="..." />
-          <div class="product-info">
-            <h2>Detail Product</h2>
-            <p>Screen : 68</p>
-            <p>Back Camera : 2 camera 12 MP</p>
-            <p>Front Camera : 7 MP</p>
-            <p class="product-moreInfo"><a href="#">more info product</a></p>
-          </div>
-        </div>
-        <div class="card-body">
-          <a href="#">
-            <h5 class="card-title">Iphone 13 Pro</h5>
-          </a>
-          <span class="card-moneySell">$1200</span>
-          <span class="card-moneyDis">$1000</span>
-        </div>
-        <div class="brand">
-          <p>Apple</p>
-        </div>
-        <div class="about">About Machine : New 100%</div>
-        <div class="card-btn">
-          <button class="btn-pay">Pay Now</button>
-          <button class="btn-add">
-            <i class="fa fa-cart-plus nav-item3"></i>
-          </button>
-        </div>
-      </div>
-      <div class="card col-xl-3 col-md-5 col-10 product-item" style="width: 18rem">
-        <div class="product-img">
-          <img src="../../asset/img/SP_Iphone_13.png" class="card-img-top" alt="..." />
-          <div class="product-info">
-            <h2>Detail Product</h2>
-            <p>Screen : 68</p>
-            <p>Back Camera : 2 camera 12 MP</p>
-            <p>Front Camera : 7 MP</p>
-            <p class="product-moreInfo"><a href="#">more info product</a></p>
-          </div>
-        </div>
-        <div class="card-body">
-          <a href="#">
-            <h5 class="card-title">Iphone 13 Pro</h5>
-          </a>
-          <span class="card-moneySell">$1200</span>
-          <span class="card-moneyDis">$1000</span>
-        </div>
-        <div class="brand">
-          <p>Apple</p>
-        </div>
-        <div class="about">About Machine : New 100%</div>
-        <div class="card-btn">
-          <button class="btn-pay">Pay Now</button>
-          <button class="btn-add">
-            <i class="fa fa-cart-plus nav-item3"></i>
-          </button>
-        </div>
-      </div>
-      <div class="card col-xl-3 col-md-5 col-10 product-item" style="width: 18rem">
-        <div class="product-img">
-          <img src="../../asset/img/SP_Iphone_13.png" class="card-img-top" alt="..." />
-          <div class="product-info">
-            <h2>Detail Product</h2>
-            <p>Screen : 68</p>
-            <p>Back Camera : 2 camera 12 MP</p>
-            <p>Front Camera : 7 MP</p>
-            <p class="product-moreInfo"><a href="#">more info product</a></p>
-          </div>
-        </div>
-        <div class="card-body">
-          <a href="#">
-            <h5 class="card-title">Iphone 13 Pro</h5>
-          </a>
-          <span class="card-moneySell">$1200</span>
-          <span class="card-moneyDis">$1000</span>
-        </div>
-        <div class="brand">
-          <p>Apple</p>
-        </div>
-        <div class="about">About Machine : New 100%</div>
-        <div class="card-btn">
-          <button class="btn-pay">Pay Now</button>
-          <button class="btn-add">
-            <i class="fa fa-cart-plus nav-item3"></i>
-          </button>
-        </div>
-      </div>
-      <div class="card col-xl-3 col-md-5 col-10 product-item" style="width: 18rem">
-        <div class="product-img">
-          <img src="../../asset/img/SP_Iphone_13.png" class="card-img-top" alt="..." />
-          <div class="product-info">
-            <h2>Detail Product</h2>
-            <p>Screen : 68</p>
-            <p>Back Camera : 2 camera 12 MP</p>
-            <p>Front Camera : 7 MP</p>
-            <p class="product-moreInfo"><a href="#">more info product</a></p>
-          </div>
-        </div>
-        <div class="card-body">
-          <a href="#">
-            <h5 class="card-title">Iphone 13 Pro</h5>
-          </a>
-          <span class="card-moneySell">$1200</span>
-          <span class="card-moneyDis">$1000</span>
-        </div>
-        <div class="brand">
-          <p>Apple</p>
-        </div>
-        <div class="about">About Machine : New 100%</div>
-        <div class="card-btn">
-          <button class="btn-pay">Pay Now</button>
-          <button class="btn-add">
-            <i class="fa fa-cart-plus nav-item3"></i>
-          </button>
-        </div>
-      </div>
-      <div class="card col-xl-3 col-md-5 col-10 product-item" style="width: 18rem">
-        <div class="product-img">
-          <img src="../../asset/img/SP_Iphone_13.png" class="card-img-top" alt="..." />
-          <div class="product-info">
-            <h2>Detail Product</h2>
-            <p>Screen : 68</p>
-            <p>Back Camera : 2 camera 12 MP</p>
-            <p>Front Camera : 7 MP</p>
-            <p class="product-moreInfo"><a href="#">more info product</a></p>
-          </div>
-        </div>
-        <div class="card-body">
-          <a href="#">
-            <h5 class="card-title">Iphone 13 Pro</h5>
-          </a>
-          <span class="card-moneySell">$1200</span>
-          <span class="card-moneyDis">$1000</span>
-        </div>
-        <div class="brand">
-          <p>Apple</p>
-        </div>
-        <div class="about">About Machine : New 100%</div>
-        <div class="card-btn">
-          <button class="btn-pay">Pay Now</button>
-          <button class="btn-add">
-            <i class="fa fa-cart-plus nav-item3"></i>
-          </button>
-        </div>
-      </div>
-      <div class="card col-xl-3 col-md-5 col-10 product-item" style="width: 18rem">
-        <div class="product-img">
-          <img src="../../asset/img/SP_Iphone_13.png" class="card-img-top" alt="..." />
-          <div class="product-info">
-            <h2>Detail Product</h2>
-            <p>Screen : 68</p>
-            <p>Back Camera : 2 camera 12 MP</p>
-            <p>Front Camera : 7 MP</p>
-            <p class="product-moreInfo"><a href="#">more info product</a></p>
-          </div>
-        </div>
-        <div class="card-body">
-          <a href="#">
-            <h5 class="card-title">Iphone 13 Pro</h5>
-          </a>
-          <span class="card-moneySell">$1200</span>
-          <span class="card-moneyDis">$1000</span>
-        </div>
-        <div class="brand">
-          <p>Apple</p>
-        </div>
-        <div class="about">About Machine : New 100%</div>
-        <div class="card-btn">
-          <button class="btn-pay">Pay Now</button>
-          <button class="btn-add">
-            <i class="fa fa-cart-plus nav-item3"></i>
-          </button>
-        </div>
-      </div>
-      <div class="card col-xl-3 col-md-5 col-10 product-item" style="width: 18rem">
-        <div class="product-img">
-          <img src="../../asset/img/SP_Iphone_13.png" class="card-img-top" alt="..." />
-          <div class="product-info">
-            <h2>Detail Product</h2>
-            <p>Screen : 68</p>
-            <p>Back Camera : 2 camera 12 MP</p>
-            <p>Front Camera : 7 MP</p>
-            <p class="product-moreInfo"><a href="#">more info product</a></p>
-          </div>
-        </div>
-        <div class="card-body">
-          <a href="#">
-            <h5 class="card-title">Iphone 13 Pro</h5>
-          </a>
-          <span class="card-moneySell">$1200</span>
-          <span class="card-moneyDis">$1000</span>
-        </div>
-        <div class="brand">
-          <p>Apple</p>
-        </div>
-        <div class="about">About Machine : New 100%</div>
-        <div class="card-btn">
-          <button class="btn-pay">Pay Now</button>
-          <button class="btn-add">
-            <i class="fa fa-cart-plus nav-item3"></i>
-          </button>
-        </div>
-      </div>
-      <div class="card col-xl-3 col-md-5 col-10 product-item" style="width: 18rem">
-        <div class="product-img">
-          <img src="../../asset/img/SP_Iphone_13.png" class="card-img-top" alt="..." />
-          <div class="product-info">
-            <h2>Detail Product</h2>
-            <p>Screen : 68</p>
-            <p>Back Camera : 2 camera 12 MP</p>
-            <p>Front Camera : 7 MP</p>
-            <p class="product-moreInfo"><a href="#">more info product</a></p>
-          </div>
-        </div>
-        <div class="card-body">
-          <a href="#">
-            <h5 class="card-title">Iphone 13 Pro</h5>
-          </a>
-          <span class="card-moneySell">$1200</span>
-          <span class="card-moneyDis">$1000</span>
-        </div>
-        <div class="brand">
-          <p>Apple</p>
-        </div>
-        <div class="about">About Machine : New 100%</div>
-        <div class="card-btn">
-          <button class="btn-pay">Pay Now</button>
-          <button class="btn-add">
-            <i class="fa fa-cart-plus nav-item3"></i>
-          </button>
-        </div>
-      </div> -->
+      
     </div>
   </section>
   <!-- Footer -->
@@ -489,6 +232,90 @@
         href="https://cybersoft.edu.vn/bootcamp-lap-trinh-fullstack-javascript-tu-zero-co-viec-lam/">Cyber Store</a>
     </div>
   </footer>
+
+  <!-- Modal Order Payment -->
+  <div class="modal fade" id="addingModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title mx-auto">Order Infomation</h4>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="container product-input-form">
+            <div class="input-field">
+              <label><i class="fa fa-mobile-alt"></i>Name</label>
+              <input
+                required=""
+                type="text"
+                id="orderName"
+                placeholder="Input name here..."
+              />
+              <span></span>
+              <span class="error-announce" id="errorName"></span>
+            </div>
+            <div class="input-field">
+              <label><i class="fa fa-phone"></i>Phone</label>
+              <input
+                required=""
+                type="number"
+                id="orderPhone"
+                placeholder="Input phone here..."
+              />
+              <span></span>
+              <span class="error-announce" id="errorPhone"></span>
+            </div>
+            <div class="input-field">
+              <label
+                ><i class="fa fa-address-card"></i>ID Card</label
+              >
+              <input
+                required=""
+                type="number"
+                id="orderID"
+                placeholder="Input ID here..."
+              />
+              <span></span>
+              <span class="error-announce" id="errorID"></span>
+            </div>
+            <div class="input-field">
+              <label><i class="fa fa-home"></i>Address: </label>
+              <input
+                required=""
+                type="text"
+                id="orderAddress"
+                placeholder="Input address here..."
+              />
+              <span></span>
+              <span class="error-announce" id="errorAddress"></span>
+            </div>
+            <div class="input-field">
+              <label
+                ><i class="fa-regular fa-comment"></i>Description</label
+              >
+              <input
+                required=""
+                type="text"
+                id="orderDesc"
+                placeholder="Description, if any..."
+              />
+              <span></span>
+              <span class="error-announce" id="errorDesc"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <div class="modal-footer-btn"></div>
+          <button type="button" class="btn btn-danger fn-btn"data-dismiss="modal" id="closeModal"> Close </button>
+          <button type="button" class="btn btn-success fn-btn" onclick="thanks()"> PayNow </button>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -504,8 +331,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"
     integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- SweetAlert -->
+  <script script src=" https://unpkg.com/sweetalert/dist/sweetalert.min.js "> </script>
   <!-- Style JS -->
-  <!-- <script src="../service/api.js"></script> -->
   <script type="module" src="../controller/main.js"></script>
 </body>
 
