@@ -1,7 +1,8 @@
 import { ServiceApi } from "../service/api.js";
-import { Product } from "../models/product.js";
+import { Validation } from "../models/_validation.js";
 import { CartCount } from "../models/cart.js";
 
+const valid = new Validation();
 const api = new ServiceApi();
 
 let arrCart = [];
@@ -33,8 +34,38 @@ window.openTableCart = () => {
     tableCart.classList.remove('show-cart');
     isValid = true;
   };
-
+  // console.log(arrCart)
+  if (arrCart.length === 0) {
+    domEle("btnEmpty").style.display = "none";
+    domEle("btnPay").style.display = "none";
+  } else {
+    domEle("btnEmpty").style.display = "inline-block";
+    domEle("btnPay").style.display = "inline-block";
+  }
 };
+
+// const checkCartClass = domEle('showCart').classList.contains('.show-cart');
+// const modal = document.getElementById('showCart');
+// const cartBtn = document.querySelector(
+//   '#collapsibleNavbar .nav-item:nth-of-type(3) .nav-link'
+// );
+// const cartTxt = document.querySelector(
+//   '#collapsibleNavbar .nav-item:nth-of-type(3) .nav-link p'
+// )
+// const cartLogo = document.querySelector(
+//   '#collapsibleNavbar .nav-item:nth-of-type(3) .nav-link i'
+// );
+// window.onclick = function (event) {
+//   if (event.target !== modal && event.target !== cartBtn) {
+//     domEle('showCart').classList.remove('show-cart');
+//   }
+//   if (event.target == cartBtn) {
+//     if (checkCartClass === false) {
+//       domEle('showCart').classList.toggle('show-cart');
+//     }
+//   }
+// };
+
 //  click tiếp tục mua sắm để đóng bảng
 window.continueShopping = () => {
   let tableCart = domEle('showCart');
@@ -43,7 +74,12 @@ window.continueShopping = () => {
     isValid = true;
   };
 }
-
+// hàm tính tổng , render, setlocal
+const countRenderLocal = () => {
+      countCartTotal();
+      renderTablePay(arrCart);
+      setLocalStore(arrCart);
+}
 //  Render Sản Phẩm
 const rennderUI = (arr) => {
   let content = "";
@@ -54,7 +90,7 @@ const rennderUI = (arr) => {
       content += `
       <div class="card col-xl-3 col-md-5 col-10 product-item" style="width: 18rem">
       <div class="product-img">
-        <img src="${product.img}" class="card-img-top" id="imgProduct" alt="..." />
+        <img src="${product.img}" class="card-img-top img-fluid" id="imgProduct" alt="..." />
         <div class="product-info">
           <h2>Detail Product</h2>
           <p>Screen : <span id="screenProduct">${product.screen}</span></p>
@@ -75,7 +111,7 @@ const rennderUI = (arr) => {
       </div>
       <div class="about" id="descProduct">About Machine : ${product.desc}</div>
       <div class="card-btn">
-        <button class="btn-pay">Pay Now</button>
+        <button class="btn-pay" id="btnPayonly1" data-toggle="modal" data-target="#addingModal" onclick="payOnlyProduct()">Pay Now</button>
         <button class="btn-add" id="btnAdd" onclick="addProductToCart(${product.id})">
           <i class="fa fa-cart-plus nav-item3"></i>
         </button>
@@ -95,8 +131,8 @@ const renderTablePay = (arr) => {
       content += `
     <div class="item">
       <div class="cart-product row">
-        <div class="cart-product-img col-6" style="width: 20rem">
-          <img src="${product.img}" alt="" id="imgShowCart" />
+        <div class="cart-product-img col-6 " style="width: 20rem">
+          <img src="${product.img}" class="img-fluid" alt="" id="imgShowCart" />
         </div>
         <div class="cart-product-info col-6">
           <h6 id="nameShowCart"> ${product.name}</h6>
@@ -120,6 +156,7 @@ const renderTablePay = (arr) => {
         </div>
       </div>
     </div>
+    <hr>
       `
     };
   };
@@ -164,17 +201,10 @@ const getLocalStore = () => {
     const string = localStorage.getItem("arrCart");
     arrCart = JSON.parse(string);
     countCartTotal();
-    // render table pay
   };
 }
 //  Tìm Sản Phẩm trong mảng
-const findItemByID = (arr, id) => arr.find((element) => {
-  if (element.product.id === id) {
-    return true;
-  } else {
-    return false;
-  }
-});
+
 
 //  Thêm sản phẩm vào giỏ hàng arrCart
 window.addProductToCart = (id) => {
@@ -182,7 +212,7 @@ window.addProductToCart = (id) => {
   promise
     .then(function (result) {
       const cartItem = new CartCount(result.data, 1);
-      const itemInArrCartPay = findItemByID(arrCart, cartItem.product.id);
+      const itemInArrCartPay = cartItem.findItemByID(arrCart, cartItem.product.id);
 
       if (arrCart.length === 0) {
         arrCart.push(cartItem);
@@ -199,10 +229,9 @@ window.addProductToCart = (id) => {
         };
       };
 
-      console.log(arrCart);
-      renderTablePay(arrCart);
-      setLocalStore(arrCart);
-      countCartTotal();
+      countRenderLocal();
+      domEle("btnEmpty").style.display = "inline-block";
+      domEle("btnPay").style.display = "inline-block";
     })
     .catch(function (error) {
       alert("Get Product By ID Error")
@@ -216,19 +245,43 @@ window.removeItem = (id) => {
       arrCart.splice(i, 1);
       break;
     }
+  };
+  if (arrCart.length === 0) {
+    domEle("btnEmpty").style.display = "none";
+    domEle("btnPay").style.display = "none";
+  } else {
+    domEle("btnEmpty").style.display = "inline-block";
+    domEle("btnPay").style.display = "inline-block";
   }
-  countCartTotal();
-  renderTablePay(arrCart);
-  setLocalStore(arrCart);
+  countRenderLocal();
 };
 //  Xóa tất cả sản phẩm khỏi giỏ hàng
 window.emptyCart = () => {
-  arrCart = [];
-  setLocalStore(arrCart);
-  renderTablePay(arrCart);
-  countCartTotal();
-  domEle("showCart").classList.remove('show-cart');
-  isValid = true;
+  swal("Do You Want Clear All Items??", {
+    buttons: {
+      cancel: "Cancel",
+      catch: {
+        text: "Yes I Want..",
+        value: "catch",
+      },
+      // defeat: true,
+    },
+  })
+
+    .then((value) => {
+      switch (value) {
+        case "catch":
+          arrCart = [];
+          countRenderLocal();
+          domEle("showCart").classList.remove('show-cart');
+          isValid = true;
+          swal("Gotcha!", "All Your Products Have Been Removed", "success");
+          break;
+
+        default:
+          swal("OKay!!  Now You Can Continue Shopping");
+      }
+    });
 };
 //  Thêm số lượng sản phẩm
 window.plusQuality = (id) => {
@@ -240,9 +293,7 @@ window.plusQuality = (id) => {
       break;
     }
   }
-  countCartTotal();
-  renderTablePay(arrCart);
-  setLocalStore(arrCart);
+  countRenderLocal();
 }
 //  Bớt số lượng sản phẩm
 window.minusQuality = (id) => {
@@ -254,9 +305,7 @@ window.minusQuality = (id) => {
       break;
     }
   }
-  countCartTotal();
-  renderTablePay(arrCart);
-  setLocalStore(arrCart);
+  countRenderLocal();
 }
 //  Lọc danh sách theo hãng
 domEle("selcOption").onchange = () => {
@@ -274,7 +323,63 @@ domEle("selcOption").onchange = () => {
       // console.log(arrType);
       rennderUI(arrType);
     })
-    .catch(function(error){
+    .catch(function (error) {
       alert("Get List For Selection Error")
     })
+}
+
+const validation = () => {
+  const name = domEle("orderName").value;
+  const phone = domEle("orderPhone").value;
+  const id = domEle("orderID").value;
+  const address = domEle("orderAddress").value;
+  const desc = domEle("orderDesc").value;
+
+  let validda = true;
+
+  // check name
+  validda &= valid.checkEmpty(name,"errorName","Please do not leave it blank");
+  validda &= valid.checkEmpty(phone,"errorPhone","Please do not leave it blank");
+  validda &= valid.checkEmpty(id,"errorID","Please do not leave it blank");
+  validda &= valid.checkEmpty(address,"errorAddress","Please do not leave it blank");
+  validda &= valid.checkEmpty(desc,"errorDesc","Please do not leave it blank");
+  return validda;
+}
+// Reset error Alert
+window.showTableOrder = () => {
+  domEle("errorName").style.display = "none";
+  domEle("errorPhone").style.display = "none";
+  domEle("errorID").style.display = "none";
+  domEle("errorAddress").style.display = "none";
+  domEle("errorDesc").style.display = "none";
+
+  domEle("orderName").value = "";
+  domEle("orderPhone").value = "";
+  domEle("orderID").value = "";
+  domEle("orderAddress").value = "";
+  domEle("orderDesc").value= "";
+
+}
+// Thanh toán hiện cảm ơn
+window.thanks = () => {
+  const check = validation();
+
+  if (check) {
+    domEle("closeModal").click();
+    swal("Good job!", "Thank You For Shopping In Our Store", "success");
+  }
+}
+// reset
+window.payOnlyProduct = () => {
+  domEle("errorName").style.display = "none";
+  domEle("errorPhone").style.display = "none";
+  domEle("errorID").style.display = "none";
+  domEle("errorAddress").style.display = "none";
+  domEle("errorDesc").style.display = "none";
+
+  domEle("orderName").value = "";
+  domEle("orderPhone").value = "";
+  domEle("orderID").value = "";
+  domEle("orderAddress").value = "";
+  domEle("orderDesc").value= "";
 }

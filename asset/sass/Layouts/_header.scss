@@ -81,6 +81,7 @@
         };
     };
     .table-pay{
+        min-width: 50%;
         position: fixed;
         top: 12%;
         right: 0px;
@@ -88,7 +89,7 @@
         height: 90%;
         overflow: auto;
         background-color: #f0ecec;
-        padding: 20px 0px 40px 30px;
+        padding: 30px;
         border-radius: 10px;
         transform: translateX(130%);
         transition: all 1s;
@@ -102,7 +103,7 @@
             height: 160px;
             .cart-product-img{
                 img{
-                    width: 10rem;
+                    width: 8rem;
                     position: absolute;
                     top: 0;
                     left: 20%;
@@ -148,7 +149,7 @@
                     margin: 0 10px;
                 };
                 .temporary-price{
-                    margin-left: 45%;
+                    margin-left: 30%;
                     span{
                         font-size: 1.3rem;
                         color: #207bb6;
@@ -163,7 +164,7 @@
                 padding: 10px 0;
             };
             td {
-                padding: 0 110%;
+                padding: 0 40%;
                 color: #e42d3f;
             };
         }
