@@ -153,6 +153,7 @@ window.confirmDelete = (id) => {
  */
 //Modify Product
 window.modProduct = (id) => {
+  resetError();
   document.querySelector(
     '.modal-footer-btn'
   ).innerHTML = `<button type="button" class="btn btn-warning fn-btn" onclick="updateProduct('${id}')">Update</button>`;
@@ -280,55 +281,133 @@ const checkValid = () => {
     valid.checkEmpty(name, 'errorName', `(*) Product's name is required!`) &&
     valid.checkPattern(
       name,
-      /^[a-zA-Z0-9 ]*$/,
+      /^(?=.*[a-zA-Z])([a-zA-Z0-9 ]+)$/,
       'errorName',
       `(*) Invalid Product's name`
+    ) &&
+    valid.checkLength(
+      name,
+      'errorName',
+      `(*) Product's name must be between 2 - 32 characters long`,
+      32,
+      2
     );
 
   //Validate Price
-  isValid &= valid.checkEmpty(
-    price,
-    'errorPrice',
-    `(*) Product's price is required!`
-  );
+  isValid &=
+    valid.checkEmpty(price, 'errorPrice', `(*) Product's price is required!`) &&
+    valid.checkPattern(
+      price,
+      /^((?!0)\d{1,10}|0|\.\d{1,2})($|\.$|\.\d{1,3}$)/,
+      'errorPrice',
+      `(*) Only allow maximum 3 decimal digits`
+    ) &&
+    valid.checkLimit(
+      price,
+      'errorPrice',
+      `(*) Price must be between $100 - $5000`,
+      5000,
+      100
+    );
 
   //Validate Screen
-  isValid &= valid.checkEmpty(
-    screen,
-    'errorScreen',
-    `(*) Product's screen size is required!`
-  );
+  isValid &=
+    valid.checkEmpty(
+      screen,
+      'errorScreen',
+      `(*) Product's screen size is required!`
+    ) &&
+    valid.checkPattern(
+      screen,
+      /^\d*\.?\d{0,2}$/,
+      'errorScreen',
+      `(*) Only allow maximum 2 decimal digits`
+    ) &&
+    valid.checkLimit(
+      screen,
+      'errorScreen',
+      `(*) Screen's size must be between 1 - 10"`,
+      10
+    );
 
   //Validate Back Camera
-  isValid &= valid.checkEmpty(
-    backCamera,
-    'errorBackCam',
-    `(*) Back Camera's Resolution is required!`
-  );
+  isValid &=
+    valid.checkEmpty(
+      backCamera,
+      'errorBackCam',
+      `(*) Back Camera's Resolution is required!`
+    ) &&
+    valid.checkPattern(
+      backCamera,
+      /^(?=.*[a-zA-Z])([a-zA-Z_ÀÁÂÃÈÉÊẾÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s 0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>~`\/?]+)$/,
+      'errorBackCam',
+      `(*) Invalid Back Camera's Resolution`
+    ) &&
+    valid.checkLength(
+      backCamera,
+      'errorBackCam',
+      `(*) Back Camera's Resolution must be between 3 - 50 characters long`,
+      50,
+      3
+    );
 
   //Validate Front Camera
-  isValid &= valid.checkEmpty(
-    frontCamera,
-    'errorFrontCam',
-    `(*) Front Camera's Resolution is required!`
-  );
+  isValid &=
+    valid.checkEmpty(
+      frontCamera,
+      'errorFrontCam',
+      `(*) Front Camera's Resolution is required!`
+    ) &&
+    valid.checkPattern(
+      frontCamera,
+      /^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9 ]+)$/,
+      'errorFrontCam',
+      `(*) Invalid Front Camera's Resolution`
+    ) &&
+    valid.checkLength(
+      frontCamera,
+      'errorFrontCam',
+      `(*) Front Camera's Resolution must be between 3 - 5 characters long`,
+      5,
+      3
+    ) &&
+    valid.checkLimit(
+      frontCamera.replace(/\D/g, ''),
+      'errorFrontCam',
+      `(*) Front Camera's Resolution must be between 1 - 150MP`,
+      150
+    );
 
   //Validate Img
   isValid &=
     valid.checkEmpty(img, 'errorImg', `(*) Product's image is required!`) &&
     valid.checkPattern(
       img,
-      /(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/,
+      /(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*).(?:png|jpg|jpeg|gif|png|svg)/,
       'errorImg',
       `(*) Invalid Img's URL`
     );
 
   //Validate Description
-  isValid &= valid.checkEmpty(
-    desc,
-    'errorDesc',
-    `(*) Product's description is required!`
-  );
+  isValid &=
+    valid.checkEmpty(
+      desc,
+      'errorDesc',
+      `(*) Product's description is required!`
+    ) &&
+    valid.checkPattern(
+      desc,
+      /^(?=.*[a-zA-Z])([a-zA-Z_ÀÁÂÃÈÉÊẾÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s 0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>~`\/?]+)$/,
+      'errorDesc',
+      `(*) Invalid Product's description`
+    ) &&
+    valid.checkLength(
+      desc,
+      'errorDesc',
+      `(*) Product's name must be between 5 - 100 characters long`,
+      100,
+      5
+    );
 
   //Validate Selection
   isValid &= valid.checkSelc(
