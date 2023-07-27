@@ -690,12 +690,36 @@ p {
   background-color: white;
   box-shadow: 0 12px 23px 0 rgba(62, 73, 84, 0.2);
 }
-
-#tbdList i, #tbdList .header-nav .navbar-nav li a p, .header-nav .navbar-nav li a #tbdList p {
-  margin-right: 5px;
+.product-list .search-and-filter .search-area {
+  width: 400px;
 }
+.product-list .search-and-filter .search-area .input-group-text {
+  background: white;
+  border-radius: 60px 0 0 60px;
+  border-width: 1px 0 1px 1px;
+  padding-left: 25px;
+  padding-right: 0;
+}
+.product-list .search-and-filter .search-area .form-control {
+  border-radius: 0 60px 60px 0;
+  border-width: 1px 1px 1px 0;
+  min-height: 40px;
+  padding-left: 20px;
+}
+.product-list .search-and-filter .search-area .form-control:focus {
+  box-shadow: none;
+  border-color: #ced4da;
+}
+.product-list .search-and-filter .custom-select {
+  border-radius: 60px;
+  border-width: 1px;
+  min-height: 40px;
+}
+.product-list .search-and-filter .custom-select:focus {
+  box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.25);
+}
+
 #tbdList button {
-  display: block;
   margin: auto;
 }
 
