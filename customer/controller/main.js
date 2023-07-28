@@ -305,6 +305,8 @@ window.minusQuality = (id) => {
         item.qualityCart--;
         if (item.qualityCart === 0) {
           arrCart.splice(i,1);
+          domEle("btnEmpty").style.display = "none";
+          domEle("btnPay").style.display = "none";
           break;
         };
       } ;
