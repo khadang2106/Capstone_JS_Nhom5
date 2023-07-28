@@ -612,11 +612,6 @@ p {
     height: 100%;
   }
 }
-.carousel-inner img {
-  height: 100vh;
-  object-fit: cover;
-}
-
 .products {
   padding: 35px 0;
   text-align: center;
