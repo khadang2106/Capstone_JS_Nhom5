@@ -51,5 +51,22 @@ export class Validation {
     return false;
   };
 
+  checkCamResoLimit = (value, errorID, mess, max, min = 1) => {
+    const matches = value.match(/(\d*\.)?\d+/gm);
+
+    let check = true;
+    matches.forEach((element) => {
+      check &= this.checkLimit(element, errorID, mess, max, min);
+    });
+
+    if (check) {
+      hideError(errorID);
+      return check;
+    } else {
+      showError(errorID, mess);
+      return check;
+    }
+  };
+
   checkExist = (value, errorId, mess) => {};
 }

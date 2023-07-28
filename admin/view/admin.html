@@ -24,6 +24,13 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <!-- Font GG -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- CSS of Admin Page -->
     <link rel="stylesheet" href="../../asset/css/style.css" />
@@ -74,8 +81,38 @@
       <div class="container">
         <h2>Product Lists</h2>
         <!-- Nav pills -->
-        <div class="d-lg-flex d-block mb-3 pb-3 border-bottom">
-          <ul class="nav nav-pills mr-auto">
+        <div class="d-lg-flex d-block mb-2 mb-md-3 pb-3 pb-sm-2 border-bottom">
+          <div class="dropdown dropright d-sm-none">
+            <button
+              type="button"
+              class="btn btn-primary fn-btn dropdown-toggle"
+              data-toggle="dropdown"
+            >
+              Product's type
+            </button>
+            <div class="dropdown-menu">
+              <ul class="nav nav-pills">
+                <li class="nav-item" onclick="availableFn()">
+                  <a class="nav-link active" data-toggle="pill" href="#phone"
+                    >Phone Management</a
+                  >
+                </li>
+                <li class="nav-item" onclick="unavailableFn()">
+                  <a class="nav-link" data-toggle="pill" href="#tablet"
+                    >Tablet Management</a
+                  >
+                </li>
+                <li class="nav-item" onclick="unavailableFn()">
+                  <a class="nav-link" data-toggle="pill" href="#laptop"
+                    >Laptop Management</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+          <ul
+            class="nav nav-pills mr-auto justify-content-between d-sm-flex d-none"
+          >
             <li class="nav-item" onclick="availableFn()">
               <a class="nav-link active" data-toggle="pill" href="#phone"
                 >Phone Management</a
@@ -92,7 +129,7 @@
               >
             </li>
           </ul>
-          <div>
+          <div class="mt-2 ml-0 ml-sm-2 m-lg-0">
             <button
               class="btn btn-primary fn-btn btn-add-product"
               data-toggle="modal"
@@ -105,28 +142,28 @@
         </div>
 
         <!-- Search bar -->
-        <div class="search-bar">
+        <div class="search-and-filter">
           <div class="row mb-2">
             <div class="col-7">
-              <div class="input-group w-75">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Search by Phone's Name"
-                  id="searchName"
-                />
+              <div class="input-group search-area">
                 <div class="input-group-prepend">
                   <span class="input-group-text">
                     <i class="fa fa-search"></i>
                   </span>
                 </div>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Search by Product's Name"
+                  id="searchName"
+                />
               </div>
             </div>
             <div class="col-5 text-right">
               <select class="custom-select w-75" id="selcFilter">
-                <option selected>Mặc định</option>
-                <option value="ascending">Giá tăng dần</option>
-                <option value="descending">Giá giảm dần</option>
+                <option selected>Default</option>
+                <option value="ascending">Price: Low to High</option>
+                <option value="descending">Price: High to Low</option>
               </select>
             </div>
           </div>
@@ -152,12 +189,8 @@
               </table>
             </div>
           </div>
-          <div class="tab-pane container fade" id="tablet">
-            Tính năng đang được xây dựng
-          </div>
-          <div class="tab-pane container fade" id="laptop">
-            Tính năng đang được xây dựng
-          </div>
+          <div class="tab-pane container fade" id="tablet"></div>
+          <div class="tab-pane container fade" id="laptop"></div>
         </div>
       </div>
 
@@ -295,49 +328,51 @@
     </section>
     <!-- Footer -->
     <footer class="footer">
-      <div class="footer-head">
-        <span>Get connected with us on social networks:</span>
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-google-plus-g"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-github"></i></a>
-      </div>
-      <div class="container">
-        <div class="footer-body row">
-          <div class="footer-item content col-lg-5 col-sm-6 col-12">
-            <i class="fab fa-magento"></i>
-            <span>CYBER STORE</span>
+      <div class="container py-4">
+        <div class="footer-body row p-1">
+          <div class="footer-item content col-sm-7 col-md-6 col-lg-4 pr-lg-5">
+            <a href="#" class="footer-item__top">
+              <i class="fab fa-magento"></i>
+              <span>CYBER STORE</span>
+            </a>
             <p>
               We pride ourselves on our efficiency and hard work, but most of
               all our ability to source you the best quality and best value
               products and devices in the market.
             </p>
           </div>
-          <div class="footer-item brand col-lg-2 col-sm-6 col-12">
+          <div
+            class="footer-item brand col-6 col-sm-5 col-md-6 col-lg-2 mt-3 mt-sm-0"
+          >
             <h4>BRANDS</h4>
-            <ul>
+            <ul class="mt-4">
               <li><a href="#">Iphone</a></li>
-              <li><a href="#">SamSung</a></li>
+              <li><a href="#">Samsung</a></li>
               <li><a href="#">Xiaomi</a></li>
               <li><a href="#">Oppo</a></li>
             </ul>
           </div>
-          <div class="footer-item support col-lg-2 col-sm-6 col-12">
+          <div
+            class="footer-item support col-6 col-sm-5 col-md-6 col-lg-2 mt-3 mt-lg-0"
+          >
             <h4>LINKS</h4>
-            <ul>
+            <ul class="mt-4">
               <li><a href="#">Order</a></li>
               <li><a href="#">Support</a></li>
               <li><a href="#">Setting</a></li>
               <li><a href="#">Helps</a></li>
             </ul>
           </div>
-          <div class="footer-item contact col-lg-3 col-sm-6 col-12">
+          <div
+            class="footer-item contact col-sm-7 col-md-6 col-lg-4 mt-0 mt-sm-3 mt-lg-0"
+          >
             <h4>CONTACT</h4>
-            <ul>
+            <ul class="mt-4">
               <li>
-                <i class="fa fa-home"></i>
-                <span>2Bis NTMK, Quận 1, TP.HCM</span>
+                <a href="https://goo.gl/maps/KbWUswNb7Moc4hnE7" target="_blank">
+                  <i class="fa fa-home"></i>
+                  <span>2Bis NTMK, Quận 1, TP.HCM</span>
+                </a>
               </li>
               <li>
                 <a href="mailto:CyberStore@gmail.com">
@@ -357,7 +392,7 @@
                   target="_blank"
                 >
                   <i class="fab fa-facebook-messenger"></i>
-                  <span>http://messages.com</span>
+                  <span>Messenger</span>
                 </a>
               </li>
             </ul>
@@ -365,11 +400,25 @@
         </div>
       </div>
       <div class="footer-copyright">
-        <span>&copy; 2022 Copyright : </span
-        ><a
-          href="https://cybersoft.edu.vn/bootcamp-lap-trinh-fullstack-javascript-tu-zero-co-viec-lam/"
-          >Cyber Store</a
-        >
+        <div class="container d-sm-flex justify-content-between">
+          <div class="footer-copyright__text">
+            <span>&copy; 2023 Copyright : </span
+            ><a
+              href="https://cybersoft.edu.vn/bootcamp-lap-trinh-fullstack-javascript-tu-zero-co-viec-lam/"
+              >Cyber Store</a
+            >
+          </div>
+          <div class="footer-socials d-lg-flex mt-1 mt-sm-0">
+            <span>Get connected with us on social networks:</span>
+            <div class="socials-icon mt-1 mt-sm-0">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-google-plus-g"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+        </div>
       </div>
     </footer>
 
@@ -414,6 +463,7 @@
     ></script>
 
     <!-- My JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"
       integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ=="

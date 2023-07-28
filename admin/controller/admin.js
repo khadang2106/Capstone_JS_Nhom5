@@ -14,31 +14,45 @@ domId('btnAdd').onclick = function () {
   resetFormValues();
 };
 
-window.unavailableFn = () => (domId('btnAdd').disabled = true);
+window.unavailableFn = () => {
+  domId('btnAdd').disabled = true;
 
-window.availableFn = () => (domId('btnAdd').disabled = false);
+  document.querySelector('.search-and-filter').style.display = 'none';
+
+  Swal.fire({
+    icon: 'error',
+    title: 'Oops...',
+    text: 'We are working on it!',
+  });
+};
+
+window.availableFn = () => {
+  domId('btnAdd').disabled = false;
+
+  document.querySelector('.search-and-filter').style.display = 'block';
+};
 
 const renderUI = (data) => {
   const content = data.reduce((total, element, index) => {
     total += `
       <tr>
-          <td>${index + 1}</td>
+          <td class="text-center">${index + 1}</td>
           <td>${element.name}</td>
-          <td>$${element.price}</td>
+          <td class="text-center">$${element.price}</td>
           <td>
             <img src="${
               element.img
             }" class="card-img-top d-block mx-auto" style="width: 100px"/>
           </td>
           <td>${element.desc}</td>
-          <td>${element.type}</td>
+          <td class="text-center">${element.type}</td>
           <td class="text-center">
             <button type="button" class="btn btn-danger fn-btn mb-1" onclick="delProduct('${
               element.id
-            }')" data-toggle="modal" data-target="#confirmation"><i class="fa-solid fa-trash"></i>Delete</button>
+            }')"><i class="fa-solid fa-trash"></i></button>
             <button type="button" data-toggle="modal" data-target="#addingModal" class="btn btn-warning fn-btn" onclick="modProduct('${
               element.id
-            }')"><i class="fa-solid fa-wrench"></i>Modify</button>
+            }')"><i class="fa-solid fa-wrench"></i></button>
           </td>
         </tr>
     `;
@@ -103,8 +117,12 @@ window.addProduct = () => {
     promise
       .then(() => {
         getListProduct();
-        alert(`${product.name} has been added successfully!`);
-        domId('selcFilter').value = 'Mặc định';
+        Swal.fire({
+          icon: 'success',
+          title: 'Added!',
+          text: `${product.name} has been added successfully!`,
+        });
+        domId('selcFilter').value = 'Default';
         document.querySelectorAll('.modal-footer button')[1].click();
       })
       .catch((error) => {
@@ -117,36 +135,80 @@ window.addProduct = () => {
  * Delete Product
  */
 window.delProduct = (id) => {
-  const promise = api.getProductById(id);
-  promise
-    .then((result) => {
-      const content = `Are you sure you want to remove <span class="font-weight-bold font-italic text-success">${result.data.name}</span> from the list?`;
-      const modalBtn = `
-        <button type="button" class="btn btn-info fn-btn" onclick="confirmDelete('${id}')">Yes</button>
-        <button id="btnCloseBox" type="button" class="btn btn-danger fn-btn" data-dismiss="modal">No</button>
-      `;
+  const swalWithBootstrapButtons = Swal.mixin({
+    customClass: {
+      confirmButton: 'btn btn-primary',
+      cancelButton: 'btn btn-danger',
+    },
+    buttonsStyling: false,
+  });
 
-      domId('modalBodyConfirm').innerHTML = content;
-      domId('modalFooterConfirm').innerHTML = modalBtn;
+  swalWithBootstrapButtons
+    .fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, cancel!',
+      reverseButtons: false,
     })
-    .catch((error) => {
-      console.log(error);
+    .then((result) => {
+      if (result.isConfirmed) {
+        api
+          .delProductApi(id)
+          .then(() => {
+            swalWithBootstrapButtons.fire(
+              'Deleted!',
+              `Your product has been deleted!`,
+              'success'
+            );
+
+            getListProduct();
+
+            domId('selcFilter').value = 'Default';
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        swalWithBootstrapButtons.fire(
+          'Cancelled',
+          `Your product's file is safe :)`,
+          'error'
+        );
+      }
     });
+  // const promise = api.getProductById(id);
+  // promise
+  //   .then((result) => {
+  //     const content = `Are you sure you want to remove <span class="font-weight-bold font-italic text-success">${result.data.name}</span> from the list?`;
+  //     const modalBtn = `
+  //       <button type="button" class="btn btn-info fn-btn" onclick="confirmDelete('${id}')">Yes</button>
+  //       <button id="btnCloseBox" type="button" class="btn btn-danger fn-btn" data-dismiss="modal">No</button>
+  //     `;
+
+  //     domId('modalBodyConfirm').innerHTML = content;
+  //     domId('modalFooterConfirm').innerHTML = modalBtn;
+  //   })
+  //   .catch((error) => {
+  //     console.log(error);
+  //   });
 };
 
-window.confirmDelete = (id) => {
-  const promise = api.delProductApi(id);
-  promise
-    .then((result) => {
-      alert(`${result.data.name} has been deleted successfully!`);
-      getListProduct();
-      domId('selcFilter').value = 'Mặc định';
-      document.querySelectorAll('#modalFooterConfirm button')[1].click();
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-};
+// window.confirmDelete = (id) => {
+//   const promise = api.delProductApi(id);
+//   promise
+//     .then((result) => {
+//       alert(`${result.data.name} has been deleted successfully!`);
+//       getListProduct();
+//       domId('selcFilter').value = 'Default';
+//       document.querySelectorAll('#modalFooterConfirm button')[1].click();
+//     })
+//     .catch((error) => {
+//       console.log(error);
+//     });
+// };
 
 /**
  * Update Product
@@ -182,17 +244,32 @@ window.updateProduct = (id) => {
   const product = getFormValues(id);
 
   if (product) {
-    const promise = api.updateProductApi(product);
-    promise
-      .then(() => {
-        getListProduct();
-        alert(`Your product has been updated successfully!`);
-        domId('selcFilter').value = 'Mặc định';
-        document.querySelectorAll('.modal-footer button')[1].click();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    Swal.fire({
+      title: 'Do you want to save the changes?',
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: 'Save',
+      denyButtonText: `Don't save`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const promise = api.updateProductApi(product);
+        promise
+          .then(() => {
+            getListProduct();
+
+            Swal.fire('Saved!', '', 'success');
+
+            domId('selcFilter').value = 'Default';
+
+            document.querySelectorAll('.modal-footer button')[1].click();
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } else if (result.isDenied) {
+        Swal.fire('Changes are not saved', '', 'info');
+      }
+    });
   }
 };
 
@@ -300,7 +377,7 @@ const checkValid = () => {
       price,
       /^((?!0)\d{1,10}|0|\.\d{1,2})($|\.$|\.\d{1,3}$)/,
       'errorPrice',
-      `(*) Only allow maximum 3 decimal digits`
+      `(*) Only allow maximum 3-decimal digit`
     ) &&
     valid.checkLimit(
       price,
@@ -321,7 +398,7 @@ const checkValid = () => {
       screen,
       /^\d*\.?\d{0,2}$/,
       'errorScreen',
-      `(*) Only allow maximum 2 decimal digits`
+      `(*) Only allow maximum 2-decimal digit`
     ) &&
     valid.checkLimit(
       screen,
@@ -349,6 +426,12 @@ const checkValid = () => {
       `(*) Back Camera's Resolution must be between 3 - 50 characters long`,
       50,
       3
+    ) &&
+    valid.checkCamResoLimit(
+      backCamera,
+      'errorBackCam',
+      `(*) Back Camera's Resolution must be between 1 - 150MP`,
+      150
     );
 
   //Validate Front Camera
@@ -360,19 +443,19 @@ const checkValid = () => {
     ) &&
     valid.checkPattern(
       frontCamera,
-      /^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9 ]+)$/,
+      /^(?=.*[a-zA-Z])([a-zA-Z_ÀÁÂÃÈÉÊẾÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s 0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>~`\/?]+)$/,
       'errorFrontCam',
       `(*) Invalid Front Camera's Resolution`
     ) &&
     valid.checkLength(
       frontCamera,
       'errorFrontCam',
-      `(*) Front Camera's Resolution must be between 3 - 5 characters long`,
-      5,
+      `(*) Front Camera's Resolution must be between 3 - 10 characters long`,
+      10,
       3
     ) &&
-    valid.checkLimit(
-      frontCamera.replace(/\D/g, ''),
+    valid.checkCamResoLimit(
+      frontCamera,
       'errorFrontCam',
       `(*) Front Camera's Resolution must be between 1 - 150MP`,
       150
