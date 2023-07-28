@@ -301,10 +301,17 @@ window.minusQuality = (id) => {
   for (let i = 0; i < arrCart.length; i++) {
     const item = arrCart[i];
     if (Number(item.product.id) === id) {
-      item.qualityCart--;
-      break;
-    }
-  }
+      if (item.qualityCart >= 1) {
+        item.qualityCart--;
+        if (item.qualityCart === 0) {
+          arrCart.splice(i,1);
+          domEle("btnEmpty").style.display = "none";
+          domEle("btnPay").style.display = "none";
+          break;
+        };
+      } ;
+    };
+  };
   countRenderLocal();
 }
 //  Lọc danh sách theo hãng
