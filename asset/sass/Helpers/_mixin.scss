@@ -3,3 +3,38 @@
   border-color: $borderColor;
   color: $color;
 }
+
+@mixin responsive($screen) {
+  @if (map-has-key($map: $breakpoints, $key: $screen)) {
+    $value: map-get(
+      $map: $breakpoints,
+      $key: $screen,
+    );
+    @media screen and (max-width: $value) {
+      @content;
+    }
+  }
+  //  @else {
+  //   @warn "`{$screen}` isn't in break point";
+  // }
+  // @if $breakpoints == xl {
+  //   @media screen and (max-width: 1200px) {
+  //     @content;
+  //   }
+  // }
+  // @if $breakpoints == lg {
+  //   @media screen and (max-width: 992px) {
+  //     @content;
+  //   }
+  // }
+  // @if $breakpoints == md {
+  //   @media screen and (max-width: 768px) {
+  //     @content;
+  //   }
+  // }
+  // @if $breakpoints == sm {
+  //   @media screen and (max-width: 576px) {
+  //     @content;
+  //   }
+  // }
+}

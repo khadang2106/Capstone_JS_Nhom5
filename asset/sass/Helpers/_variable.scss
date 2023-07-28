@@ -1,7 +1,6 @@
 //color
 $cl-primary: #ffd507;
 $cl-primary-opacity: rgba(255, 214, 7, 0.3);
-$cl-logo: #e80505;
 $cl-black-1: #1a1919;
 $cl-white-1: #f4f4f4;
 $cl-white-2: #f0f1f5;
@@ -10,4 +9,11 @@ $cl-grey-2: #9f9f9f;
 $cl-grey-3: #7a7a7a;
 $cl-grey-4: #353535;
 $cl-blue-1: #2953e8;
-// $fs-logo:
+
+//break points
+$breakpoints: (
+  'xl': 1200px,
+  'lg': 992px,
+  'md': 768px,
+  'sm': 576px,
+);
