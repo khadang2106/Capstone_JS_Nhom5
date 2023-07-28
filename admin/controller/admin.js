@@ -14,9 +14,23 @@ domId('btnAdd').onclick = function () {
   resetFormValues();
 };
 
-window.unavailableFn = () => (domId('btnAdd').disabled = true);
+window.unavailableFn = () => {
+  domId('btnAdd').disabled = true;
 
-window.availableFn = () => (domId('btnAdd').disabled = false);
+  document.querySelector('.search-and-filter').style.display = 'none';
+
+  Swal.fire({
+    icon: 'error',
+    title: 'Oops...',
+    text: 'We are working on it!',
+  });
+};
+
+window.availableFn = () => {
+  domId('btnAdd').disabled = false;
+
+  document.querySelector('.search-and-filter').style.display = 'block';
+};
 
 const renderUI = (data) => {
   const content = data.reduce((total, element, index) => {
