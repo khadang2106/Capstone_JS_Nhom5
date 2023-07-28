@@ -16,6 +16,10 @@
   -moz-appearance: textfield;
 }
 
+body {
+  font-family: "Poppins", sans-serif;
+}
+
 p {
   margin: 0;
 }
@@ -160,7 +164,7 @@ p {
   width: 100%;
 }
 .header-nav .nav-logo i, .header-nav .nav-logo .navbar-nav li a p, .header-nav .navbar-nav li a .nav-logo p {
-  color: #e80505;
+  color: #ffd507;
   font-size: 35px;
   margin-right: 10px;
 }
@@ -264,7 +268,7 @@ p {
   justify-content: center;
 }
 .header-nav .table-pay .cart-product .cart-product-info a {
-  color: #E80505;
+  color: #e80505;
   cursor: pointer;
   text-decoration: underline;
   transition: all 0.5s;
@@ -334,8 +338,8 @@ p {
   outline: none;
 }
 .header-nav .table-pay .cart-btn .cart-emmpty {
-  background-color: #E80505;
-  border: 1px #E80505 solid;
+  background-color: #e80505;
+  border: 1px #e80505 solid;
   margin-right: 2rem;
 }
 .header-nav .table-pay .cart-btn .cart-emmpty i, .header-nav .table-pay .cart-btn .cart-emmpty .navbar-nav li a p, .header-nav .navbar-nav li a .table-pay .cart-btn .cart-emmpty p {
@@ -375,6 +379,46 @@ p {
 @media (min-width: 285.99px) {
   .header-nav .navbar-nav li {
     margin: 10px 0;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .header-nav .nav-logo .navbar-brand {
+    font-size: 1rem;
+  }
+  .header-nav .nav-logo i, .header-nav .nav-logo .navbar-nav li a p, .header-nav .navbar-nav li a .nav-logo p {
+    font-size: 30px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .header-nav .nav-logo .navbar-brand {
+    font-size: 14px;
+  }
+  .header-nav .nav-logo i, .header-nav .nav-logo .navbar-nav li a p, .header-nav .navbar-nav li a .nav-logo p {
+    font-size: 20px;
+  }
+}
+@media screen and (max-width: 322px) {
+  .header-nav .nav-logo .navbar-brand {
+    font-size: 12px;
+  }
+  .header-nav .nav-logo i, .header-nav .nav-logo .navbar-nav li a p, .header-nav .navbar-nav li a .nav-logo p {
+    font-size: 18px;
+  }
+}
+@media screen and (max-width: 576px) {
+  .header-nav .navbar-toggler {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .header-nav .navbar-toggler {
+    font-size: 10px;
+  }
+}
+@media screen and (max-width: 322px) {
+  .header-nav .navbar-toggler {
+    font-size: 8px;
   }
 }
 
@@ -435,7 +479,7 @@ p {
 .footer .footer-body .content i, .footer .footer-body .content .header-nav .navbar-nav li a p, .header-nav .navbar-nav li a .footer .footer-body .content p {
   font-size: 30px;
   margin-right: 10px;
-  color: #e80505;
+  color: #ffd507;
 }
 .footer .footer-body .content span {
   font-size: 25px;
@@ -718,6 +762,18 @@ p {
 .product-list .search-and-filter .custom-select:focus {
   box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.25);
 }
+.product-list .dropdown button {
+  font-size: 15px;
+}
+.product-list .dropdown-menu {
+  padding: 0;
+  border-radius: 0.5rem;
+}
+.product-list .dropdown-menu .nav-pills {
+  display: block;
+  background-color: white;
+  padding: 0;
+}
 
 #tbdList button {
   margin: auto;
@@ -725,6 +781,77 @@ p {
 
 #confirmation .modal-content {
   border-radius: 1.5rem;
+}
+
+@media screen and (max-width: 992px) {
+  .product-list h2 {
+    font-size: 1.75rem;
+  }
+  .product-list .nav-pills .nav-link {
+    font-size: 15px;
+  }
+  .product-list .search-and-filter .search-area {
+    width: 300px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .product-list h2 {
+    font-size: 1.5rem;
+  }
+  .product-list .nav-pills .nav-link {
+    font-size: 14px;
+    padding: 6px 9px;
+  }
+  .product-list #btnAdd {
+    font-size: 15px;
+  }
+  .product-list .search-and-filter .search-area {
+    width: 250px;
+  }
+  .product-list .search-and-filter .search-area input, .product-list .search-and-filter .search-area .product-input-form .select-field select, .product-input-form .select-field .product-list .search-and-filter .search-area select {
+    font-size: 12.5px;
+  }
+  .product-list .search-and-filter .custom-select {
+    font-size: 12.5px;
+  }
+}
+@media screen and (max-width: 576px) {
+  .product-list .nav-pills .nav-link {
+    font-size: 13px;
+  }
+  .product-list #btnAdd {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 420px) {
+  .product-list .search-and-filter .search-area {
+    width: 200px;
+  }
+  .product-list .search-and-filter .search-area input, .product-list .search-and-filter .search-area .product-input-form .select-field select, .product-input-form .select-field .product-list .search-and-filter .search-area select {
+    font-size: 9.5px;
+  }
+  .product-list .search-and-filter .custom-select {
+    font-size: 9.5px;
+  }
+}
+@media screen and (max-width: 350px) {
+  .product-list .search-and-filter .col-7 {
+    display: none;
+  }
+  .product-list .search-and-filter .col-5 {
+    text-align: revert !important;
+  }
+}
+@media screen and (max-width: 322px) {
+  .product-list h2 {
+    font-size: 1rem;
+  }
+  .product-list .search-and-filter .search-area {
+    display: none;
+  }
+  .product-list .search-and-filter .custom-select {
+    font-size: 9.5px;
+  }
 }
 
 .product-input-form .input-field, .product-input-form .select-field {

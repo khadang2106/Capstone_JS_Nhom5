@@ -1,102 +1,102 @@
 // Footer
 .footer {
-    letter-spacing: 1px;
-    li {
-        list-style: none;
-        color: white;
-    };
-    a {
-        color: white;
-        text-decoration: none;
-    };
-    text-align: center;
-    background-color: rgba(0, 0, 0, 80%);
+  letter-spacing: 1px;
+  li {
+    list-style: none;
     color: white;
-    .footer-head {
-        padding: 15px;
-        border-bottom: 1px rgba(255, 255, 255, 0.612) solid;
-        font-size: 17px;
-        a {
-            margin: 0 5px;
-            transition: all 0.5s;
-            font-size: 1.3rem;
-            i {
-                transition: all 0.5s;
-                &:hover {
-                    color: #ffd507;
-                    animation: shake 1.5s linear 10;
+  }
+  a {
+    color: white;
+    text-decoration: none;
+  }
+  text-align: center;
+  background-color: rgba(0, 0, 0, 80%);
+  color: white;
+  .footer-head {
+    padding: 15px;
+    border-bottom: 1px rgba(255, 255, 255, 0.612) solid;
+    font-size: 17px;
+    a {
+      margin: 0 5px;
+      transition: all 0.5s;
+      font-size: 1.3rem;
+      i {
+        transition: all 0.5s;
+        &:hover {
+          color: #ffd507;
+          animation: shake 1.5s linear 10;
 
-                    @keyframes shake {
-                        25% {
-                            transform: rotate(-20deg);
-                        }
-                        50% {
-                            transform: rotate(0);
-                        }
-                        75% {
-                            transform: rotate(20deg);
-                        }
-                        100% {
-                            transform: rotate(0);
-                        }
-                    }
-                }
+          @keyframes shake {
+            25% {
+              transform: rotate(-20deg);
             }
+            50% {
+              transform: rotate(0);
+            }
+            75% {
+              transform: rotate(20deg);
+            }
+            100% {
+              transform: rotate(0);
+            }
+          }
         }
-    };
+      }
+    }
+  }
+  .footer-body {
+    a {
+      transition: all 0.5s;
+    }
+    li {
+      margin: 10px 0;
+      &:hover {
+        a {
+          color: #ffd507;
+        }
+      }
+    }
+    .content {
+      i {
+        font-size: 30px;
+        margin-right: 10px;
+        color: $cl-primary;
+      }
+      span {
+        font-size: 25px;
+        font-weight: 600;
+        vertical-align: bottom;
+        margin-bottom: 15px;
+      }
+      p {
+        padding-right: 3rem;
+        margin-top: 20px;
+      }
+    }
+    .footer-item {
+      padding: 20px 10px;
+      text-align: left;
+    }
+    .contact {
+      i {
+        margin-right: 10px;
+      }
+    }
+  }
+  .footer-copyright {
+    padding: 20px;
+    border-top: 1px rgba(255, 255, 255, 0.612) solid;
+    a {
+      transition: all 0.5s;
+      &:hover {
+        color: #ffd507;
+      }
+    }
+  }
+
+  @media screen and (max-width: 567.98px) {
     .footer-body {
-        a{
-            transition: all .5s;
-        }
-        li{
-            margin: 10px 0;
-            &:hover{
-             a  {
-                    color: #ffd507;
-                }  
-            };
-        }
-        .content{
-            i {
-                font-size: 30px;
-                margin-right: 10px;
-                color: $cl-logo;
-            }
-            span{
-                font-size: 25px;
-                font-weight: 600;
-                vertical-align: bottom;
-                margin-bottom: 15px;
-            }
-            p {
-                padding-right: 3rem;
-                margin-top: 20px;
-            }
-        }
-        .footer-item {
-            padding: 20px 10px;
-            text-align: left;
-        };
-        .contact{
-            i {
-                margin-right: 10px;
-            };
-        }
-    };
-    .footer-copyright {
-        padding: 20px;
-        border-top: 1px rgba(255, 255, 255, 0.612) solid;
-        a{
-            transition: all .5s;
-            &:hover{
-                color: #ffd507;
-            }
-        }
-    };
-    
-    @media screen and (max-width: 567.98px) {
-        .footer-body{
-            padding-left: 15px;
-        };
-    };
+      padding-left: 15px;
+    }
+  }
 }

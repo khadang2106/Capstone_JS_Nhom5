@@ -24,6 +24,13 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <!-- Font GG -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- CSS of Admin Page -->
     <link rel="stylesheet" href="../../asset/css/style.css" />
@@ -74,8 +81,38 @@
       <div class="container">
         <h2>Product Lists</h2>
         <!-- Nav pills -->
-        <div class="d-lg-flex d-block mb-3 pb-3 border-bottom">
-          <ul class="nav nav-pills mr-auto">
+        <div class="d-lg-flex d-block mb-2 mb-md-3 pb-3 pb-sm-2 border-bottom">
+          <div class="dropdown dropright d-sm-none">
+            <button
+              type="button"
+              class="btn btn-primary fn-btn dropdown-toggle"
+              data-toggle="dropdown"
+            >
+              Dropright button
+            </button>
+            <div class="dropdown-menu">
+              <ul class="nav nav-pills">
+                <li class="nav-item" onclick="availableFn()">
+                  <a class="nav-link active" data-toggle="pill" href="#phone"
+                    >Phone Management</a
+                  >
+                </li>
+                <li class="nav-item" onclick="unavailableFn()">
+                  <a class="nav-link" data-toggle="pill" href="#tablet"
+                    >Tablet Management</a
+                  >
+                </li>
+                <li class="nav-item" onclick="unavailableFn()">
+                  <a class="nav-link" data-toggle="pill" href="#laptop"
+                    >Laptop Management</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+          <ul
+            class="nav nav-pills mr-auto justify-content-between d-sm-flex d-none"
+          >
             <li class="nav-item" onclick="availableFn()">
               <a class="nav-link active" data-toggle="pill" href="#phone"
                 >Phone Management</a
@@ -92,7 +129,7 @@
               >
             </li>
           </ul>
-          <div>
+          <div class="mt-2 ml-0 ml-sm-2 m-lg-0">
             <button
               class="btn btn-primary fn-btn btn-add-product"
               data-toggle="modal"

@@ -64,6 +64,18 @@
       }
     }
   }
+  .dropdown button {
+    font-size: 15px;
+  }
+  .dropdown-menu {
+    padding: 0;
+    border-radius: 0.5rem;
+    .nav-pills {
+      display: block;
+      background-color: white;
+      padding: 0;
+    }
+  }
 }
 #tbdList {
   button {
@@ -73,5 +85,95 @@
 #confirmation {
   .modal-content {
     border-radius: 1.5rem;
+  }
+}
+
+//Responsive
+.product-list {
+  @include responsive(lg) {
+    h2 {
+      font-size: 1.75rem;
+    }
+    .nav-pills .nav-link {
+      font-size: 15px;
+    }
+    .search-and-filter .search-area {
+      width: 300px;
+    }
+  }
+  @include responsive(md) {
+    h2 {
+      font-size: 1.5rem;
+    }
+    .nav-pills .nav-link {
+      font-size: 14px;
+      padding: 6px 9px;
+    }
+    #btnAdd {
+      font-size: 15px;
+    }
+    .search-and-filter {
+      .search-area {
+        width: 250px;
+        input {
+          font-size: 12.5px;
+        }
+      }
+
+      .custom-select {
+        font-size: 12.5px;
+      }
+    }
+  }
+  @include responsive(sm) {
+    .nav-pills .nav-link {
+      font-size: 13px;
+    }
+    #btnAdd {
+      font-size: 14px;
+    }
+  }
+
+  @media screen and (max-width: 420px) {
+    .search-and-filter {
+      .search-area {
+        width: 200px;
+        input {
+          font-size: 9.5px;
+        }
+      }
+
+      .custom-select {
+        font-size: 9.5px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 350px) {
+    .search-and-filter {
+      .col-7 {
+        display: none;
+      }
+
+      .col-5 {
+        text-align: revert !important;
+      }
+    }
+  }
+
+  @media screen and (max-width: 322px) {
+    h2 {
+      font-size: 1rem;
+    }
+
+    .search-and-filter {
+      .search-area {
+        display: none;
+      }
+
+      .custom-select {
+        font-size: 9.5px;
+      }
+    }
   }
 }

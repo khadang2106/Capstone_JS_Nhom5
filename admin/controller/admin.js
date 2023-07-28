@@ -22,16 +22,16 @@ const renderUI = (data) => {
   const content = data.reduce((total, element, index) => {
     total += `
       <tr>
-          <td>${index + 1}</td>
+          <td class="text-center">${index + 1}</td>
           <td>${element.name}</td>
-          <td>$${element.price}</td>
+          <td class="text-center">$${element.price}</td>
           <td>
             <img src="${
               element.img
             }" class="card-img-top d-block mx-auto" style="width: 100px"/>
           </td>
           <td>${element.desc}</td>
-          <td>${element.type}</td>
+          <td class="text-center">${element.type}</td>
           <td class="text-center">
             <button type="button" class="btn btn-danger fn-btn mb-1" onclick="delProduct('${
               element.id
