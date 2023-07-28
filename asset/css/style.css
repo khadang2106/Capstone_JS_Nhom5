@@ -386,7 +386,7 @@ p {
 }
 @media (max-width: 440px) {
   .header-nav .cart-product-info {
-    margin-left: 56%;
+    padding-left: 30px;
   }
   .header-nav .cart-product-info p {
     display: none !important;
