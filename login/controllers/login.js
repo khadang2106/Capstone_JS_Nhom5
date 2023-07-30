@@ -50,7 +50,7 @@ class Login {
             } else {
               document.querySelector(
                 '.error-message-all'
-              ).innerHTML = `Invalid`;
+              ).innerHTML = `Your password or username is incorrect. Please try again.`;
               return;
             }
           } else {
