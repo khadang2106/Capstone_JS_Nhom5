@@ -6,5 +6,85 @@
   }
   .container {
     max-width: 1240px;
+    .admin-profile {
+      display: flex;
+      align-items: center;
+      border-left: 1px solid #eee;
+      padding-left: 30px;
+      color: #eee;
+      transition: all 0.5s ease;
+      &:hover {
+        text-decoration: none;
+        color: $cl-primary;
+      }
+      img {
+        height: 39px;
+        width: 39px;
+        border-radius: 100%;
+      }
+      .admin-info {
+        padding-left: 15px;
+        text-align: left;
+      }
+    }
+
+    .dropdown-menu {
+      i {
+        margin-right: 5px;
+      }
+      .logout i {
+        color: red;
+      }
+      .profile i {
+        color: #1740d4;
+      }
+    }
+  }
+}
+
+//Responsive
+.admin-header {
+  .admin-info {
+    @media screen and (max-width: 851px) {
+      font-size: 15px;
+    }
+    @media screen and (max-width: 604px) {
+      display: none;
+    }
+  }
+
+  .container .admin-profile {
+    @media screen and (max-width: 444px) {
+      padding-left: 15px;
+      img {
+        height: 30px;
+        width: 30px;
+      }
+    }
+    @media screen and (max-width: 376px) {
+      padding-left: 5px;
+      border: none;
+      img {
+        height: 25px;
+        width: 25px;
+      }
+    }
+  }
+  .container .dropdown {
+    @media screen and (max-width: 356px) {
+      margin: 0 !important;
+    }
+    .admin-profile img {
+      @media screen and (max-width: 356px) {
+        height: 20px;
+        width: 20px;
+      }
+    }
+
+    @include responsive(sm) {
+      .dropdown-menu .dropdown-item {
+        font-size: 14px;
+      }
+    }
   }
 }

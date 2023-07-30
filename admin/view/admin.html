@@ -73,6 +73,27 @@
               </li>
             </ul>
           </div>
+          <div class="dropdown ml-sm-4 ml-1">
+            <a
+              href=""
+              class="admin-profile"
+              role="button"
+              data-toggle="dropdown"
+            >
+              <img
+                src="https://vora.dexignlab.com/react/demo/static/media/17.a7b6b9cb820bffd162bf.jpg"
+              />
+              <div class="admin-info">Welcome <span id="fullName"></span></div>
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item profile" href="#"
+                ><i class="fa-solid fa-user"></i>Profile</a
+              >
+              <a class="dropdown-item logout" href="#"
+                ><i class="fa-solid fa-arrow-right-from-bracket"></i>Log Out</a
+              >
+            </div>
+          </div>
         </div>
       </nav>
     </header>
@@ -472,6 +493,8 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+    <script src="../../login/controllers/auth.js"></script>
+    <script src="../../login/controllers/init.js"></script>
     <script src="../controller/method.js"></script>
     <!-- <script src="../models/product.js"></script>
     <script src="../services/api.js"></script> -->
