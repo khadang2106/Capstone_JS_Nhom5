@@ -19,9 +19,12 @@
 //Customer Page
 @import './Pages/customer/carousel';
 @import './Pages/customer/product';
-@import "./Pages/customer/modal-oder";
+@import './Pages/customer/modal-oder';
 
 //Admin Page
 @import './Pages/admin/admin-header';
 @import './Pages/admin/product-list';
 @import './Pages/admin/product-input-form';
+
+//Login Page
+@import './Pages/login/login-page';
