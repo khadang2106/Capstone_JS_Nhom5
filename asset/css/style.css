@@ -799,6 +799,21 @@ p {
     display: none;
   }
 }
+@media screen and (max-width: 604px) {
+  .admin-header .dropdown-menu {
+    left: -45px;
+  }
+}
+@media screen and (max-width: 445px) {
+  .admin-header .dropdown-menu {
+    left: -70px;
+  }
+}
+@media screen and (max-width: 376px) {
+  .admin-header .dropdown-menu {
+    left: -85px;
+  }
+}
 @media screen and (max-width: 444px) {
   .admin-header .container .admin-profile {
     padding-left: 15px;

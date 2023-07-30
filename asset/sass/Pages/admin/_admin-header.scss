@@ -52,7 +52,17 @@
       display: none;
     }
   }
-
+  .dropdown-menu {
+    @media screen and (max-width: 604px) {
+      left: -45px;
+    }
+    @media screen and (max-width: 445px) {
+      left: -70px;
+    }
+    @media screen and (max-width: 376px) {
+      left: -85px;
+    }
+  }
   .container .admin-profile {
     @media screen and (max-width: 444px) {
       padding-left: 15px;
