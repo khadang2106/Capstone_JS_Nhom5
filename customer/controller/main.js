@@ -203,8 +203,6 @@ const getLocalStore = () => {
     countCartTotal();
   };
 }
-//  Tìm Sản Phẩm trong mảng
-
 
 //  Thêm sản phẩm vào giỏ hàng arrCart
 window.addProductToCart = (id) => {
@@ -376,6 +374,8 @@ window.thanks = () => {
   if (check) {
     domEle("closeModal").click();
     swal("Good job!", "Thank You For Shopping In Our Store", "success");
+    arrCart = [];
+    countRenderLocal();
   }
 }
 // reset
